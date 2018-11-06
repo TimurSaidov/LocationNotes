@@ -13,11 +13,21 @@ import CoreData
 
 public class Folder: NSManagedObject {
     class func newFolder(name: String) -> Folder {
-        let folder = Folder(context: CoreDataManager.shared.managedObjectContext)
+        let newFolder = Folder(context: CoreDataManager.shared.managedObjectContext)
         
-        folder.name = name
-        folder.dateUpdate = NSDate()
+        newFolder.name = name
+        newFolder.dateUpdate = NSDate()
         
-        return folder
+        return newFolder
+    }
+    
+    // Создание заметки непосредственно в выбранной папке. Не объект класса. То есть это метод готового экземпляра.
+    func addNote() -> Note {
+        let newNote = Note(context: CoreDataManager.shared.managedObjectContext)
+
+        newNote.folder = self
+        newNote.dateUpdate = NSDate()
+        
+        return newNote
     }
 }

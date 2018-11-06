@@ -89,10 +89,10 @@
 				3944B53A2191F24000341788 /* CoreDataManager.swift */,
 				3944B52B2191F1DA00341788 /* Folder+CoreDataClass.swift */,
 				3944B52C2191F1DA00341788 /* Folder+CoreDataProperties.swift */,
-				3944B5292191F1DA00341788 /* Location+CoreDataClass.swift */,
-				3944B52A2191F1DA00341788 /* Location+CoreDataProperties.swift */,
 				3944B52F2191F1DA00341788 /* Note+CoreDataClass.swift */,
 				3944B5302191F1DA00341788 /* Note+CoreDataProperties.swift */,
+				3944B5292191F1DA00341788 /* Location+CoreDataClass.swift */,
+				3944B52A2191F1DA00341788 /* Location+CoreDataProperties.swift */,
 				3944B52D2191F1DA00341788 /* ImageNote+CoreDataClass.swift */,
 				3944B52E2191F1DA00341788 /* ImageNote+CoreDataProperties.swift */,
 			);

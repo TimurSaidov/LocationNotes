@@ -20,7 +20,7 @@ extension Folder {
     @NSManaged public var image: NSData?
     @NSManaged public var dateUpdate: NSDate?
     @NSManaged public var name: String?
-    @NSManaged public var notes: NSSet?
+    @NSManaged public var notes: NSSet? // Множество заметок Note.
 
 }
 
