@@ -86,13 +86,13 @@
         <!--Folders-->
         <scene sceneID="LzY-ya-mPo">
             <objects>
-                <tableViewController id="cFK-G3-21u" sceneMemberID="viewController">
+                <tableViewController id="cFK-G3-21u" customClass="FoldersTableViewController" customModule="LocationNotes" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="tBa-6e-XSb">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <prototypes>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" id="SHA-kY-CL1">
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="CellFolder" id="SHA-kY-CL1">
                                 <rect key="frame" x="0.0" y="28" width="320" height="44"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="SHA-kY-CL1" id="nv5-Hs-40E">
@@ -106,7 +106,13 @@
                             <outlet property="delegate" destination="cFK-G3-21u" id="Iab-FP-CDq"/>
                         </connections>
                     </tableView>
-                    <navigationItem key="navigationItem" title="Folders" id="3tx-0I-BBm"/>
+                    <navigationItem key="navigationItem" title="Folders" id="3tx-0I-BBm">
+                        <barButtonItem key="rightBarButtonItem" systemItem="add" id="Aih-Gd-7V8">
+                            <connections>
+                                <action selector="addButtonAction:" destination="cFK-G3-21u" id="Mi4-V0-mdU"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
                     <connections>
                         <segue destination="Oan-tF-QRW" kind="show" id="sWr-wK-Pcb"/>
                     </connections>
@@ -138,7 +144,9 @@
                             <outlet property="delegate" destination="Oan-tF-QRW" id="Ous-n9-abN"/>
                         </connections>
                     </tableView>
-                    <navigationItem key="navigationItem" title="Folder" id="lxF-MG-WBH"/>
+                    <navigationItem key="navigationItem" title="Folder" id="lxF-MG-WBH">
+                        <barButtonItem key="rightBarButtonItem" systemItem="add" id="TJW-Y6-cCx"/>
+                    </navigationItem>
                     <connections>
                         <segue destination="Fsj-CH-U6k" kind="show" id="aXN-BC-FMk"/>
                     </connections>
