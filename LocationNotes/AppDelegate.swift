@@ -20,8 +20,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         
         print(CoreDataManager.shared.persistentContainer.persistentStoreCoordinator, CoreDataManager.shared.persistentContainer.persistentStoreDescriptions)
         
-        let _  = Folder.newFolder(name: "New folder")
-        CoreDataManager.shared.saveContext()
+        print(folders.count)
         
         return true
     }

@@ -9,6 +9,40 @@
 import UIKit
 import CoreData
 
+var folders: [Folder] {
+    let request = NSFetchRequest<Folder>(entityName: "Folder")
+    
+    let sortDescriptor = NSSortDescriptor(key: "name", ascending: true) // Сортировщик, сортирующий директории по name.
+    request.sortDescriptors = [sortDescriptor]
+    
+    do {
+        let array = try CoreDataManager.shared.managedObjectContext.fetch(request) // (_ request: NSFetchRequest<T>) throws -> [T], где request: NSFetchRequest<Folder>, array: [Folder].
+        
+        return array
+    } catch {
+        print(error.localizedDescription)
+    }
+    
+    return []
+}
+
+var notes: [Note] {
+    let request = NSFetchRequest<Note>(entityName: "Note")
+    
+    let sortDescriptor = NSSortDescriptor(key: "dateUpdate", ascending: false)
+    request.sortDescriptors = [sortDescriptor]
+    
+    do {
+        let array = try CoreDataManager.shared.managedObjectContext.fetch(request)
+        
+        return array
+    } catch {
+        print(error.localizedDescription)
+    }
+    
+    return []
+}
+
 class CoreDataManager: NSObject {
     
     static let shared = CoreDataManager()
