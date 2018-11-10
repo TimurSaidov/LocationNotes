@@ -13,6 +13,33 @@ import UIKit
 
 
 public class Note: NSManagedObject {
+    var imageActual: UIImage? {
+        get {
+            if let image = self.image {
+                if let imageBig = image.imageBig {
+                    return UIImage(data: imageBig as Data)
+                }
+            }
+            return nil
+        }
+        set(newValue) {
+            if newValue == nil {
+                if let image = self.image {
+                    CoreDataManager.shared.managedObjectContext.delete(image)
+                }
+                self.imageSmall = nil
+            } else {
+                if self.image == nil {
+                    self.image = ImageNote(context: CoreDataManager.shared.managedObjectContext)
+                }
+                
+                self.image?.imageBig = newValue?.jpegData(compressionQuality: 1) as NSData?
+                self.imageSmall = newValue?.jpegData(compressionQuality: 0.1) as NSData?
+            }
+            dateUpdate = NSDate()
+        }
+    }
+    
     class func newNote(name: String, inFolder: Folder?) -> Note { // Создание заметки в Notes Tab Bar'а.
         let newNote = Note(context: CoreDataManager.shared.managedObjectContext)
         

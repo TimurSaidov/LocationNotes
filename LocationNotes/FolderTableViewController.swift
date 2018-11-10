@@ -56,6 +56,12 @@ class FolderTableViewController: UITableViewController {
         let note = notesActual[indexPath.row]
         cell.textLabel?.text = note.name
         cell.detailTextLabel?.text = FormatterDate.df.string(from: note.dateUpdate! as Date)
+        
+        if let imageSmall = note.imageSmall {
+            cell.imageView?.image = UIImage(data: imageSmall as Data)
+        } else {
+            cell.imageView?.image = nil
+        }
 
         return cell
     }

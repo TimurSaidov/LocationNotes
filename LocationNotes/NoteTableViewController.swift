@@ -11,6 +11,7 @@ import UIKit
 class NoteTableViewController: UITableViewController {
     
     var note: Note?
+    var isChangedImage: Bool = false
 
     @IBOutlet weak var noteImageView: UIImageView!
     @IBOutlet weak var noteNameTextField: UITextField!
@@ -33,6 +34,10 @@ class NoteTableViewController: UITableViewController {
         note?.name = noteNameTextField.text
         note?.textDescription = noteDescriptionTextField.text
         
+        if isChangedImage {
+            note?.imageActual = noteImageView.image
+        }
+        
         CoreDataManager.shared.saveContext()
         
         dismiss(animated: true, completion: nil)
@@ -43,6 +48,7 @@ class NoteTableViewController: UITableViewController {
 
         noteNameTextField.text = note?.name
         noteDescriptionTextField.text = note?.textDescription
+        noteImageView.image = note?.imageActual
         
         saveButtonState()
     }
@@ -93,6 +99,7 @@ class NoteTableViewController: UITableViewController {
 extension NoteTableViewController: UIImagePickerControllerDelegate, UINavigationControllerDelegate {
     func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
         noteImageView.image = info[UIImagePickerController.InfoKey.originalImage] as? UIImage
+        isChangedImage = true
         picker.dismiss(animated: true, completion: nil)
     }
     
