@@ -22,6 +22,7 @@
 		3944B5372191F1DA00341788 /* Note+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3944B52F2191F1DA00341788 /* Note+CoreDataClass.swift */; };
 		3944B5382191F1DA00341788 /* Note+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3944B5302191F1DA00341788 /* Note+CoreDataProperties.swift */; };
 		3944B53B2191F24000341788 /* CoreDataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3944B53A2191F24000341788 /* CoreDataManager.swift */; };
+		39FCE167219700B900080A6D /* FolderTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 39FCE166219700B800080A6D /* FolderTableViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -42,6 +43,7 @@
 		3944B52F2191F1DA00341788 /* Note+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Note+CoreDataClass.swift"; sourceTree = "<group>"; };
 		3944B5302191F1DA00341788 /* Note+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Note+CoreDataProperties.swift"; sourceTree = "<group>"; };
 		3944B53A2191F24000341788 /* CoreDataManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreDataManager.swift; sourceTree = "<group>"; };
+		39FCE166219700B800080A6D /* FolderTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FolderTableViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -76,6 +78,7 @@
 			children = (
 				3944B4C22191EBE700341788 /* AppDelegate.swift */,
 				392370AE2192214000E54F09 /* FoldersTableViewController.swift */,
+				39FCE166219700B800080A6D /* FolderTableViewController.swift */,
 				3944B4C62191EBE700341788 /* Main.storyboard */,
 				3944B4CC2191EBE800341788 /* Assets.xcassets */,
 				3944B4CE2191EBE800341788 /* LaunchScreen.storyboard */,
@@ -174,6 +177,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				3944B5382191F1DA00341788 /* Note+CoreDataProperties.swift in Sources */,
+				39FCE167219700B900080A6D /* FolderTableViewController.swift in Sources */,
 				3944B5312191F1DA00341788 /* Location+CoreDataClass.swift in Sources */,
 				3944B5342191F1DA00341788 /* Folder+CoreDataProperties.swift in Sources */,
 				3944B5362191F1DA00341788 /* ImageNote+CoreDataProperties.swift in Sources */,

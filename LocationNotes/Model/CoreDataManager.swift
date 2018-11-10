@@ -18,6 +18,8 @@ var folders: [Folder] {
     do {
         let array = try CoreDataManager.shared.managedObjectContext.fetch(request) // (_ request: NSFetchRequest<T>) throws -> [T], где request: NSFetchRequest<Folder>, array: [Folder].
         
+        print("Folders count!")
+        
         return array
     } catch {
         print(error.localizedDescription)
@@ -95,5 +97,14 @@ class CoreDataManager: NSObject {
             }
         }
     }
+}
 
+class FormatterDate {
+    static let df: DateFormatter = {
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateStyle = .medium
+        dateFormatter.timeStyle = .short
+        
+        return dateFormatter
+    }()
 }

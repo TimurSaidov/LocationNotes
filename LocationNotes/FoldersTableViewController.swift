@@ -21,6 +21,8 @@ class FoldersTableViewController: UITableViewController {
             guard folderName != "" else { return }
             
             let _ = Folder.newFolder(name: folderName)
+            
+            CoreDataManager.shared.saveContext()
             self.tableView.reloadData()
         }
         let cancel = UIAlertAction(title: "Cancel", style: .cancel, handler: nil)
@@ -44,11 +46,15 @@ class FoldersTableViewController: UITableViewController {
 
     override func numberOfSections(in tableView: UITableView) -> Int {
         // #warning Incomplete implementation, return the number of sections
+        print(#function)
+        
         return 1
     }
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         // #warning Incomplete implementation, return the number of rows
+        print(#function)
+        
         return folders.count
     }
 
@@ -69,41 +75,37 @@ class FoldersTableViewController: UITableViewController {
     }
     */
 
-    /*
     // Override to support editing the table view.
-    override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCellEditingStyle, forRowAt indexPath: IndexPath) {
+    override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
         if editingStyle == .delete {
             // Delete the row from the data source
-            tableView.deleteRows(at: [indexPath], with: .fade)
+            
+            let folder = folders[indexPath.row]
+            CoreDataManager.shared.managedObjectContext.delete(folder)
+            CoreDataManager.shared.saveContext()
+            
+            tableView.deleteRows(at: [indexPath], with: .fade) // Вызов этого метода, вызывает еще и методы перезагрузки таблицы: numberOfSections(in:) и tableView(_:numberOfRowsInSection:), а поскольку folders - глобальная переменная, в которую данные загружаются из контекста, и которая вычисляется каждый раз, когда ее вызывают.
+            
+            print("Delete folder - \(#function)")
         } else if editingStyle == .insert {
             // Create a new instance of the appropriate class, insert it into the array, and add a new row to the table view
         }    
     }
-    */
-
-    /*
-    // Override to support rearranging the table view.
-    override func tableView(_ tableView: UITableView, moveRowAt fromIndexPath: IndexPath, to: IndexPath) {
-
+    
+    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        performSegue(withIdentifier: "FolderSegue", sender: self)
     }
-    */
 
-    /*
-    // Override to support conditional rearranging of the table view.
-    override func tableView(_ tableView: UITableView, canMoveRowAt indexPath: IndexPath) -> Bool {
-        // Return false if you do not want the item to be re-orderable.
-        return true
-    }
-    */
-
-    /*
     // MARK: - Navigation
 
     // In a storyboard-based application, you will often want to do a little preparation before navigation
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
+        if segue.identifier == "FolderSegue" {
+            if let indexPath = tableView.indexPathForSelectedRow {
+                let selectedFolder = folders[indexPath.row]
+                let dvc = segue.destination as! FolderTableViewController
+                dvc.folder = selectedFolder
+            }
+        }
     }
-    */
-
 }
