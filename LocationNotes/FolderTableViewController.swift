@@ -18,9 +18,9 @@ class FolderTableViewController: UITableViewController {
         return notes
     }
     
-    var newNote: Note?
+    var newOrSelectedNote: Note?
     @IBAction func pushAddAction(_ sender: UIBarButtonItem) {
-        newNote = Note.newNote(name: "", inFolder: folder)
+        newOrSelectedNote = Note.newNote(name: "", inFolder: folder)
         performSegue(withIdentifier: "NoteSegue", sender: self)
     }
     
@@ -35,7 +35,7 @@ class FolderTableViewController: UITableViewController {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(true)
         
-        tableView.reloadData() 
+        tableView.reloadData()
     }
 
     // MARK: - Table view data source
@@ -68,32 +68,25 @@ class FolderTableViewController: UITableViewController {
     }
     */
 
-    /*
     // Override to support editing the table view.
-    override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCellEditingStyle, forRowAt indexPath: IndexPath) {
+    override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
         if editingStyle == .delete {
             // Delete the row from the data source
+            let note = notesActual[indexPath.row]
+            CoreDataManager.shared.managedObjectContext.delete(note)
+            CoreDataManager.shared.saveContext()
+            
             tableView.deleteRows(at: [indexPath], with: .fade)
         } else if editingStyle == .insert {
             // Create a new instance of the appropriate class, insert it into the array, and add a new row to the table view
         }    
     }
-    */
 
-    /*
-    // Override to support rearranging the table view.
-    override func tableView(_ tableView: UITableView, moveRowAt fromIndexPath: IndexPath, to: IndexPath) {
-
+    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        let note = notesActual[indexPath.row]
+        newOrSelectedNote = note
+        performSegue(withIdentifier: "NoteSegue", sender: self)
     }
-    */
-
-    /*
-    // Override to support conditional rearranging of the table view.
-    override func tableView(_ tableView: UITableView, canMoveRowAt indexPath: IndexPath) -> Bool {
-        // Return false if you do not want the item to be re-orderable.
-        return true
-    }
-    */
 
     // MARK: - Navigation
 
@@ -102,7 +95,7 @@ class FolderTableViewController: UITableViewController {
         if segue.identifier == "NoteSegue" {
             let dvc = segue.destination as! UINavigationController
             let noteTableVC = dvc.viewControllers.first! as! NoteTableViewController
-            noteTableVC.note = newNote
+            noteTableVC.note = newOrSelectedNote
         }
     }
 }

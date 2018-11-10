@@ -57,7 +57,7 @@
                         </barButtonItem>
                     </navigationItem>
                     <connections>
-                        <segue destination="Q8N-8i-B1M" kind="presentation" identifier="NoteSegue" id="94Y-iA-eTd"/>
+                        <segue destination="Liq-tq-2vT" kind="presentation" identifier="NoteSegue" id="se8-Ym-gpJ"/>
                     </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="kZy-fa-fjK" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -193,7 +193,7 @@
                         </barButtonItem>
                     </navigationItem>
                     <connections>
-                        <segue destination="Q8N-8i-B1M" kind="presentation" identifier="NoteSegue" id="jcf-Q4-E47"/>
+                        <segue destination="Liq-tq-2vT" kind="presentation" identifier="NoteSegue" id="2Vw-ep-pKy"/>
                     </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="tOm-zc-B40" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -242,6 +242,9 @@
                                                     <nil key="textColor"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                     <textInputTraits key="textInputTraits"/>
+                                                    <connections>
+                                                        <action selector="textEditingChanged:" destination="Fsj-CH-U6k" eventType="editingChanged" id="Qlm-Sm-kKL"/>
+                                                    </connections>
                                                 </textField>
                                             </subviews>
                                             <constraints>
@@ -332,17 +335,29 @@
                             <outlet property="delegate" destination="Fsj-CH-U6k" id="udg-3n-ev4"/>
                         </connections>
                     </tableView>
-                    <navigationItem key="navigationItem" title="Note" id="7T8-5L-YvI"/>
+                    <navigationItem key="navigationItem" title="Note" id="7T8-5L-YvI">
+                        <barButtonItem key="leftBarButtonItem" systemItem="cancel" id="L7Q-2K-MSP">
+                            <connections>
+                                <action selector="cancelButtonTapped:" destination="Fsj-CH-U6k" id="ryt-QV-i8V"/>
+                            </connections>
+                        </barButtonItem>
+                        <barButtonItem key="rightBarButtonItem" style="done" systemItem="save" id="Asr-aq-6BI">
+                            <connections>
+                                <action selector="saveButtonTapped:" destination="Fsj-CH-U6k" id="Een-cy-A7h"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
                     <size key="freeformSize" width="375" height="900"/>
                     <connections>
                         <outlet property="noteDescriptionTextField" destination="XmP-ak-ttr" id="Yhi-lY-OU5"/>
                         <outlet property="noteImageView" destination="gCJ-UM-7x8" id="fdv-Qp-8I2"/>
                         <outlet property="noteNameTextField" destination="wZ2-WZ-ykE" id="gx0-Zx-bP9"/>
+                        <outlet property="saveButton" destination="Asr-aq-6BI" id="v7U-O8-e3j"/>
                     </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Jlg-Fn-l5o" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="4282" y="-57"/>
+            <point key="canvasLocation" x="4045" y="-57"/>
         </scene>
         <!--Folders-->
         <scene sceneID="kvx-kB-pr1">
@@ -400,25 +415,25 @@
             <point key="canvasLocation" x="169" y="942"/>
         </scene>
         <!--Navigation Controller-->
-        <scene sceneID="XIi-8N-KVs">
+        <scene sceneID="Ql5-lV-rTD">
             <objects>
-                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="Q8N-8i-B1M" sceneMemberID="viewController">
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="Liq-tq-2vT" sceneMemberID="viewController">
                     <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="1u6-nn-cQA">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="Z0l-11-vkc">
                         <rect key="frame" x="0.0" y="20" width="320" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
                     <nil name="viewControllers"/>
                     <connections>
-                        <segue destination="Fsj-CH-U6k" kind="relationship" relationship="rootViewController" id="e37-mh-KyX"/>
+                        <segue destination="Fsj-CH-U6k" kind="relationship" relationship="rootViewController" id="afd-0p-b5j"/>
                     </connections>
                 </navigationController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="3Mz-q1-lfJ" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="igD-CD-PKj" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3281" y="-57"/>
+            <point key="canvasLocation" x="3038" y="-57"/>
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
-        <segue reference="94Y-iA-eTd"/>
+        <segue reference="se8-Ym-gpJ"/>
     </inferredMetricsTieBreakers>
 </document>
