@@ -13,11 +13,15 @@ import UIKit
 
 
 public class Note: NSManagedObject {
-    class func newNote(name: String) -> Note { // Создание заметки в Notes Tab Bar'а.
+    class func newNote(name: String, inFolder: Folder?) -> Note { // Создание заметки в Notes Tab Bar'а.
         let newNote = Note(context: CoreDataManager.shared.managedObjectContext)
         
         newNote.name = name
         newNote.dateUpdate = NSDate()
+        
+        if let inFolder = inFolder {
+            newNote.folder = inFolder
+        }
         
         return newNote
     }

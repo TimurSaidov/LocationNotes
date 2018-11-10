@@ -17,13 +17,25 @@ class FolderTableViewController: UITableViewController {
         }
         return notes
     }
-
+    
+    var newNote: Note?
+    @IBAction func pushAddAction(_ sender: UIBarButtonItem) {
+        newNote = Note.newNote(name: "", inFolder: folder)
+        performSegue(withIdentifier: "NoteSegue", sender: self)
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
         if let folder = folder {
             navigationItem.title = folder.name
         }
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(true)
+        
+        tableView.reloadData() 
     }
 
     // MARK: - Table view data source
@@ -83,14 +95,14 @@ class FolderTableViewController: UITableViewController {
     }
     */
 
-    /*
     // MARK: - Navigation
 
     // In a storyboard-based application, you will often want to do a little preparation before navigation
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
+        if segue.identifier == "NoteSegue" {
+            let dvc = segue.destination as! UINavigationController
+            let noteTableVC = dvc.viewControllers.first! as! NoteTableViewController
+            noteTableVC.note = newNote
+        }
     }
-    */
-
 }
