@@ -22,10 +22,6 @@ class NoteTableViewController: UITableViewController {
         saveButtonState()
     }
     
-    @IBAction func cancelButtonTapped(_ sender: UIBarButtonItem) {
-        dismiss(animated: true, completion: nil)
-    }
-    
     @IBAction func saveButtonTapped(_ sender: UIBarButtonItem) {
         if note?.name != noteNameTextField.text || note?.textDescription != noteDescriptionTextField.text {
             note?.dateUpdate = NSDate()
@@ -45,14 +41,14 @@ class NoteTableViewController: UITableViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
+    
         noteNameTextField.text = note?.name
         noteDescriptionTextField.text = note?.textDescription
         noteImageView.image = note?.imageActual
         
         saveButtonState()
     }
-    
+
     let imagePicker: UIImagePickerController = UIImagePickerController()
     
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {

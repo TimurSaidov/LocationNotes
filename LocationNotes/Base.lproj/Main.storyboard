@@ -57,7 +57,7 @@
                         </barButtonItem>
                     </navigationItem>
                     <connections>
-                        <segue destination="Liq-tq-2vT" kind="presentation" identifier="NoteSegue" id="se8-Ym-gpJ"/>
+                        <segue destination="Liq-tq-2vT" kind="show" identifier="NoteSegue" id="se8-Ym-gpJ"/>
                     </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="kZy-fa-fjK" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -117,13 +117,54 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <prototypes>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="CellFolder" id="SHA-kY-CL1">
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="CellFolder" id="SHA-kY-CL1" customClass="FoldersTableViewCell" customModule="LocationNotes" customModuleProvider="target">
                                 <rect key="frame" x="0.0" y="28" width="320" height="44"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="SHA-kY-CL1" id="nv5-Hs-40E">
                                     <rect key="frame" x="0.0" y="0.0" width="320" height="43.5"/>
                                     <autoresizingMask key="autoresizingMask"/>
+                                    <subviews>
+                                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="directory" translatesAutoresizingMaskIntoConstraints="NO" id="Prv-CM-Xnt">
+                                            <rect key="frame" x="16" y="5" width="34" height="34"/>
+                                            <constraints>
+                                                <constraint firstAttribute="width" secondItem="Prv-CM-Xnt" secondAttribute="height" multiplier="1:1" id="FZy-sY-cYL"/>
+                                                <constraint firstAttribute="height" constant="34" id="SA3-RM-7AF"/>
+                                            </constraints>
+                                        </imageView>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Notes count" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="97f-Xv-rer">
+                                            <rect key="frame" x="66" y="23" width="238" height="15"/>
+                                            <constraints>
+                                                <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="238" id="xop-Qx-0ba"/>
+                                            </constraints>
+                                            <fontDescription key="fontDescription" type="system" pointSize="12"/>
+                                            <nil key="textColor"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Name" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="WIv-FD-l1l">
+                                            <rect key="frame" x="66" y="4" width="238" height="21"/>
+                                            <constraints>
+                                                <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="238" id="0be-Qu-6VS"/>
+                                            </constraints>
+                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                            <nil key="textColor"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                    </subviews>
+                                    <constraints>
+                                        <constraint firstAttribute="bottom" secondItem="97f-Xv-rer" secondAttribute="bottom" constant="5.5" id="6eo-cb-v0C"/>
+                                        <constraint firstAttribute="trailing" secondItem="WIv-FD-l1l" secondAttribute="trailing" constant="16" id="80M-qy-KkH"/>
+                                        <constraint firstAttribute="trailing" secondItem="97f-Xv-rer" secondAttribute="trailing" constant="16" id="9wZ-pp-ShH"/>
+                                        <constraint firstItem="WIv-FD-l1l" firstAttribute="leading" secondItem="Prv-CM-Xnt" secondAttribute="trailing" constant="16" id="Hx9-m1-PWk"/>
+                                        <constraint firstItem="WIv-FD-l1l" firstAttribute="top" secondItem="nv5-Hs-40E" secondAttribute="top" constant="4" id="Mzw-3L-nHa"/>
+                                        <constraint firstItem="Prv-CM-Xnt" firstAttribute="centerY" secondItem="nv5-Hs-40E" secondAttribute="centerY" id="a6w-21-5aA"/>
+                                        <constraint firstItem="97f-Xv-rer" firstAttribute="leading" secondItem="Prv-CM-Xnt" secondAttribute="trailing" constant="16" id="adM-nd-AQd"/>
+                                        <constraint firstItem="Prv-CM-Xnt" firstAttribute="leading" secondItem="nv5-Hs-40E" secondAttribute="leading" constant="16" id="prN-xt-6w5"/>
+                                    </constraints>
                                 </tableViewCellContentView>
+                                <connections>
+                                    <outlet property="folderNameLabel" destination="WIv-FD-l1l" id="AIC-om-Zzk"/>
+                                    <outlet property="notesCountLabel" destination="97f-Xv-rer" id="7h7-wO-bwS"/>
+                                </connections>
                             </tableViewCell>
                         </prototypes>
                         <connections>
@@ -144,7 +185,7 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="IgX-sd-eyn" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1121" y="-388"/>
+            <point key="canvasLocation" x="1119.375" y="-388.73239436619718"/>
         </scene>
         <!--Folder-->
         <scene sceneID="ESs-qZ-O7I">
@@ -193,7 +234,7 @@
                         </barButtonItem>
                     </navigationItem>
                     <connections>
-                        <segue destination="Liq-tq-2vT" kind="presentation" identifier="NoteSegue" id="2Vw-ep-pKy"/>
+                        <segue destination="Liq-tq-2vT" kind="show" identifier="NoteSegue" id="2Vw-ep-pKy"/>
                     </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="tOm-zc-B40" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -336,12 +377,7 @@
                         </connections>
                     </tableView>
                     <navigationItem key="navigationItem" title="Note" id="7T8-5L-YvI">
-                        <barButtonItem key="leftBarButtonItem" systemItem="cancel" id="L7Q-2K-MSP">
-                            <connections>
-                                <action selector="cancelButtonTapped:" destination="Fsj-CH-U6k" id="ryt-QV-i8V"/>
-                            </connections>
-                        </barButtonItem>
-                        <barButtonItem key="rightBarButtonItem" style="done" systemItem="save" id="Asr-aq-6BI">
+                        <barButtonItem key="leftBarButtonItem" style="done" systemItem="save" id="Asr-aq-6BI">
                             <connections>
                                 <action selector="saveButtonTapped:" destination="Fsj-CH-U6k" id="Een-cy-A7h"/>
                             </connections>
@@ -417,6 +453,7 @@
         <!--Navigation Controller-->
         <scene sceneID="Ql5-lV-rTD">
             <objects>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="igD-CD-PKj" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="Liq-tq-2vT" sceneMemberID="viewController">
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="Z0l-11-vkc">
@@ -428,12 +465,14 @@
                         <segue destination="Fsj-CH-U6k" kind="relationship" relationship="rootViewController" id="afd-0p-b5j"/>
                     </connections>
                 </navigationController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="igD-CD-PKj" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="3038" y="-57"/>
         </scene>
     </scenes>
+    <resources>
+        <image name="directory" width="48" height="48"/>
+    </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="se8-Ym-gpJ"/>
+        <segue reference="2Vw-ep-pKy"/>
     </inferredMetricsTieBreakers>
 </document>

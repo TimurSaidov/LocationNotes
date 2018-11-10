@@ -24,6 +24,7 @@
 		3944B53B2191F24000341788 /* CoreDataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3944B53A2191F24000341788 /* CoreDataManager.swift */; };
 		39FCE167219700B900080A6D /* FolderTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 39FCE166219700B800080A6D /* FolderTableViewController.swift */; };
 		39FCE16921970C4A00080A6D /* NoteTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 39FCE16821970C4A00080A6D /* NoteTableViewController.swift */; };
+		39FCE16D2197343300080A6D /* FoldersTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 39FCE16C2197343300080A6D /* FoldersTableViewCell.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -46,6 +47,7 @@
 		3944B53A2191F24000341788 /* CoreDataManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreDataManager.swift; sourceTree = "<group>"; };
 		39FCE166219700B800080A6D /* FolderTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FolderTableViewController.swift; sourceTree = "<group>"; };
 		39FCE16821970C4A00080A6D /* NoteTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NoteTableViewController.swift; sourceTree = "<group>"; };
+		39FCE16C2197343300080A6D /* FoldersTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FoldersTableViewCell.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -81,6 +83,7 @@
 				3944B5392191F1EE00341788 /* Model */,
 				3944B4C22191EBE700341788 /* AppDelegate.swift */,
 				392370AE2192214000E54F09 /* FoldersTableViewController.swift */,
+				39FCE16C2197343300080A6D /* FoldersTableViewCell.swift */,
 				39FCE166219700B800080A6D /* FolderTableViewController.swift */,
 				39FCE16821970C4A00080A6D /* NoteTableViewController.swift */,
 				3944B4C62191EBE700341788 /* Main.storyboard */,
@@ -184,6 +187,7 @@
 				3944B5312191F1DA00341788 /* Location+CoreDataClass.swift in Sources */,
 				3944B5342191F1DA00341788 /* Folder+CoreDataProperties.swift in Sources */,
 				3944B5362191F1DA00341788 /* ImageNote+CoreDataProperties.swift in Sources */,
+				39FCE16D2197343300080A6D /* FoldersTableViewCell.swift in Sources */,
 				3944B4C32191EBE700341788 /* AppDelegate.swift in Sources */,
 				3944B53B2191F24000341788 /* CoreDataManager.swift in Sources */,
 				39FCE16921970C4A00080A6D /* NoteTableViewController.swift in Sources */,
