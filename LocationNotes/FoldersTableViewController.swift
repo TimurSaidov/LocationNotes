@@ -79,7 +79,6 @@ class FoldersTableViewController: UITableViewController {
     override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
         if editingStyle == .delete {
             // Delete the row from the data source
-            
             let folder = folders[indexPath.row]
             CoreDataManager.shared.managedObjectContext.delete(folder)
             CoreDataManager.shared.saveContext()

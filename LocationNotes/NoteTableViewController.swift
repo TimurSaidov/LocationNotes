@@ -47,6 +47,38 @@ class NoteTableViewController: UITableViewController {
         saveButtonState()
     }
     
+    let imagePicker: UIImagePickerController = UIImagePickerController()
+    
+    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        if indexPath.section == 0 && indexPath.row == 0 {
+            let alertController = UIAlertController(title: "Add photo using", message: nil, preferredStyle: UIAlertController.Style.actionSheet)
+            let cameraAction = UIAlertAction(title: "Camera", style: UIAlertAction.Style.default, handler: { (action: UIAlertAction) -> Void in
+                self.imagePicker.sourceType = .camera
+                self.imagePicker.delegate = self
+                self.present(self.imagePicker, animated: true, completion: nil)
+            })
+            let photoLibAction = UIAlertAction(title: "Library", style: UIAlertAction.Style.default, handler: { (action: UIAlertAction) -> Void in
+                self.imagePicker.sourceType = .photoLibrary
+                self.imagePicker.delegate = self
+                self.present(self.imagePicker, animated: true, completion: nil)
+            })
+            let cancelAction = UIAlertAction(title: "Cancel", style: UIAlertAction.Style.cancel, handler: nil)
+            alertController.addAction(cameraAction)
+            alertController.addAction(photoLibAction)
+            alertController.addAction(cancelAction)
+            
+            if self.noteImageView.image != nil {
+                let deleteAction = UIAlertAction(title: "Delete", style: .destructive) { (action) in
+                    self.noteImageView.image = nil
+                }
+                alertController.addAction(deleteAction)
+            }
+            
+            self.present(alertController, animated: true, completion: nil)
+        }
+        tableView.deselectRow(at: indexPath, animated: true)
+    }
+    
     func saveButtonState() {
         if noteNameTextField.text == "" {
             saveButton.isEnabled = false
@@ -55,5 +87,16 @@ class NoteTableViewController: UITableViewController {
         } else {
             saveButton.isEnabled = true
         }
+    }
+}
+
+extension NoteTableViewController: UIImagePickerControllerDelegate, UINavigationControllerDelegate {
+    func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
+        noteImageView.image = info[UIImagePickerController.InfoKey.originalImage] as? UIImage
+        picker.dismiss(animated: true, completion: nil)
+    }
+    
+    func imagePickerControllerDidCancel(_ picker: UIImagePickerController) {
+        picker.dismiss(animated: true, completion: nil)
     }
 }

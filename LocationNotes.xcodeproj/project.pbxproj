@@ -78,6 +78,7 @@
 		3944B4C12191EBE700341788 /* LocationNotes */ = {
 			isa = PBXGroup;
 			children = (
+				3944B5392191F1EE00341788 /* Model */,
 				3944B4C22191EBE700341788 /* AppDelegate.swift */,
 				392370AE2192214000E54F09 /* FoldersTableViewController.swift */,
 				39FCE166219700B800080A6D /* FolderTableViewController.swift */,
@@ -86,7 +87,6 @@
 				3944B4CC2191EBE800341788 /* Assets.xcassets */,
 				3944B4CE2191EBE800341788 /* LaunchScreen.storyboard */,
 				3944B4D12191EBE800341788 /* Info.plist */,
-				3944B5392191F1EE00341788 /* Model */,
 				3944B4C92191EBE700341788 /* LocationNotes.xcdatamodeld */,
 			);
 			path = LocationNotes;
