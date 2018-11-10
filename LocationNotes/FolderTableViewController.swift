@@ -11,15 +11,19 @@ import UIKit
 class FolderTableViewController: UITableViewController {
     
     var folder: Folder?
+    var notesActual: [Note] { // Поскольку класс принадлежит двум контроллерам на view, то есть переменная, отвечающая за массив заметок: либо это заметки из конкретной директории, либо это все заметки (из глобальной переменной в CoreDataManager.swift).
+        if let folder = folder {
+            return folder.notesSorted
+        }
+        return notes
+    }
 
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        // Uncomment the following line to preserve selection between presentations
-        // self.clearsSelectionOnViewWillAppear = false
-
-        // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
-        // self.navigationItem.rightBarButtonItem = self.editButtonItem
+        if let folder = folder {
+            navigationItem.title = folder.name
+        }
     }
 
     // MARK: - Table view data source
@@ -31,13 +35,13 @@ class FolderTableViewController: UITableViewController {
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         // #warning Incomplete implementation, return the number of rows
-        return folder!.notes!.count
+        return notesActual.count
     }
 
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "CellNote", for: indexPath)
 
-        let note = folder!.notesSorted[indexPath.row]
+        let note = notesActual[indexPath.row]
         cell.textLabel?.text = note.name
         cell.detailTextLabel?.text = FormatterDate.df.string(from: note.dateUpdate! as Date)
 
