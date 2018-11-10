@@ -11,6 +11,7 @@ import UIKit
 class NoteTableViewController: UITableViewController {
     
     var note: Note?
+    var folder: Folder?
     var isChangedImage: Bool = false
 
     @IBOutlet weak var noteImageView: UIImageView!
@@ -22,16 +23,27 @@ class NoteTableViewController: UITableViewController {
         saveButtonState()
     }
     
+    @IBAction func cancelButtonTapped(_ sender: UIBarButtonItem) {
+        dismiss(animated: true, completion: nil)
+    }
+    
     @IBAction func saveButtonTapped(_ sender: UIBarButtonItem) {
-        if note?.name != noteNameTextField.text || note?.textDescription != noteDescriptionTextField.text {
-            note?.dateUpdate = NSDate()
-        }
-        
-        note?.name = noteNameTextField.text
-        note?.textDescription = noteDescriptionTextField.text
-        
-        if isChangedImage {
-            note?.imageActual = noteImageView.image
+        if let note = note {
+            if note.name != noteNameTextField.text || note.textDescription != noteDescriptionTextField.text {
+                note.dateUpdate = NSDate()
+            }
+            
+            note.name = noteNameTextField.text
+            note.textDescription = noteDescriptionTextField.text
+            
+            if isChangedImage {
+                note.imageActual = noteImageView.image
+            }
+        } else {
+            let newNote = Note.newNote(name: noteNameTextField.text!, inFolder: folder)
+            
+            newNote.textDescription = noteDescriptionTextField.text
+            newNote.imageActual = noteImageView.image
         }
         
         CoreDataManager.shared.saveContext()
@@ -42,11 +54,27 @@ class NoteTableViewController: UITableViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
     
-        noteNameTextField.text = note?.name
-        noteDescriptionTextField.text = note?.textDescription
-        noteImageView.image = note?.imageActual
+        if let note = note {
+            navigationItem.title = note.name
+            noteNameTextField.text = note.name
+            noteDescriptionTextField.text = note.textDescription
+            noteImageView.image = note.imageActual
+        } else {
+            navigationItem.title = "Note"
+        }
         
         saveButtonState()
+    }
+    
+    override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        switch (indexPath.section, indexPath.row) {
+        case (0, 0):
+            return 175
+        case (1, 0):
+            return 175
+        default:
+            return 44
+        }
     }
 
     let imagePicker: UIImagePickerController = UIImagePickerController()

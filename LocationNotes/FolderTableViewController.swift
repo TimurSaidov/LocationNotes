@@ -17,10 +17,10 @@ class FolderTableViewController: UITableViewController {
         }
         return notes
     }
-    var newOrSelectedNote: Note?
+    var selectedNote: Note?
     
     @IBAction func pushAddAction(_ sender: UIBarButtonItem) {
-        newOrSelectedNote = Note.newNote(name: "", inFolder: folder)
+        selectedNote = nil // Обнуляется, поскольку по возвращении с NoteTableViewController'а selectedNote остается тем же, каким был до перехода на NoteTableViewController.
         performSegue(withIdentifier: "NoteSegue", sender: self)
     }
     
@@ -34,6 +34,11 @@ class FolderTableViewController: UITableViewController {
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(true)
+        
+        print("FolderTableViewController - \(#function)")
+        if let name = selectedNote?.name {
+            print("SelectedNote - " + name)
+        }
         
         tableView.reloadData()
     }
@@ -82,7 +87,7 @@ class FolderTableViewController: UITableViewController {
 
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         let note = notesActual[indexPath.row]
-        newOrSelectedNote = note
+        selectedNote = note
         performSegue(withIdentifier: "NoteSegue", sender: self)
     }
 
@@ -93,7 +98,8 @@ class FolderTableViewController: UITableViewController {
         if segue.identifier == "NoteSegue" {
             let dvc = segue.destination as! UINavigationController
             let noteTableVC = dvc.viewControllers.first! as! NoteTableViewController
-            noteTableVC.note = newOrSelectedNote
+            noteTableVC.note = selectedNote
+            noteTableVC.folder = folder
         }
     }
 }

@@ -40,7 +40,7 @@ public class Note: NSManagedObject {
         }
     }
     
-    class func newNote(name: String, inFolder: Folder?) -> Note { // Создание заметки в Notes Tab Bar'а.
+    class func newNote(name: String, inFolder: Folder?) -> Note {
         let newNote = Note(context: CoreDataManager.shared.managedObjectContext)
         
         newNote.name = name
