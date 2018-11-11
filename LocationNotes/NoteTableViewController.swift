@@ -12,18 +12,38 @@ class NoteTableViewController: UITableViewController {
     
     var note: Note?
     var folder: Folder?
+    var inputFolder: Folder?
+    var inputNoteFolder: Folder?
     var isChangedImage: Bool = false
 
     @IBOutlet weak var noteImageView: UIImageView!
     @IBOutlet weak var noteNameTextField: UITextField!
     @IBOutlet weak var noteDescriptionTextField: UITextView!
     @IBOutlet weak var saveButton: UIBarButtonItem!
+    @IBOutlet weak var folderLabel: UILabel!
+    @IBOutlet weak var nameFolderLabel: UILabel!
+    
+    @IBAction func umwindSegueFromSelectFolderTableViewController(segue: UIStoryboardSegue) {
+        if segue.identifier == "unwindSegue" {
+            let svc = segue.source as! SelectFolderTableViewController
+            folder = svc.folder
+            
+            if let note = note {
+                note.folder = svc.note?.folder
+            }
+        }
+    }
     
     @IBAction func textEditingChanged(_ sender: UITextField) {
         saveButtonState()
     }
     
     @IBAction func cancelButtonTapped(_ sender: UIBarButtonItem) {
+        if let inputFolder = inputFolder {
+            note?.folder = inputFolder
+        } else {
+            note?.folder = inputNoteFolder
+        }
         dismiss(animated: true, completion: nil)
     }
     
@@ -53,6 +73,9 @@ class NoteTableViewController: UITableViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        inputFolder = folder // Пришедшая директория. nil, если заметка выбрана из Notes.
+        inputNoteFolder = note?.folder // Директория пришедшей заметки.
     
         if let note = note {
             navigationItem.title = note.name
@@ -64,6 +87,18 @@ class NoteTableViewController: UITableViewController {
         }
         
         saveButtonState()
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(true)
+        
+        if let folder = folder {
+            nameFolderLabel.text = folder.name
+        } else if let folder = note?.folder {
+            nameFolderLabel.text = folder.name
+        } else {
+            nameFolderLabel.text = "-"
+        }
     }
     
     override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
@@ -116,6 +151,16 @@ class NoteTableViewController: UITableViewController {
             saveButton.isEnabled = false
         } else {
             saveButton.isEnabled = true
+        }
+    }
+    
+    // MARK: - Navigation
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == "SelectFolderSegue" {
+            let dvc = segue.destination as! SelectFolderTableViewController
+            dvc.note = note
+            dvc.folder = folder
         }
     }
 }

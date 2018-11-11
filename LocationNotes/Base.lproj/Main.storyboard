@@ -117,11 +117,11 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <prototypes>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="CellFolder" id="SHA-kY-CL1" customClass="FoldersTableViewCell" customModule="LocationNotes" customModuleProvider="target">
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" accessoryType="disclosureIndicator" indentationWidth="10" reuseIdentifier="CellFolder" id="SHA-kY-CL1" customClass="FoldersTableViewCell" customModule="LocationNotes" customModuleProvider="target">
                                 <rect key="frame" x="0.0" y="28" width="320" height="44"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="SHA-kY-CL1" id="nv5-Hs-40E">
-                                    <rect key="frame" x="0.0" y="0.0" width="320" height="43.5"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="286" height="43.5"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
                                         <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="directory" translatesAutoresizingMaskIntoConstraints="NO" id="Prv-CM-Xnt">
@@ -341,23 +341,38 @@
                                                     </constraints>
                                                 </imageView>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Folder" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="KhN-tB-Ffk">
-                                                    <rect key="frame" x="62" y="11.5" width="49" height="21"/>
+                                                    <rect key="frame" x="62" y="11.5" width="53" height="21"/>
                                                     <constraints>
-                                                        <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="49" id="ioI-xb-w60"/>
+                                                        <constraint firstAttribute="height" constant="21" id="5ag-e4-MGo"/>
+                                                        <constraint firstAttribute="width" secondItem="KhN-tB-Ffk" secondAttribute="height" multiplier="53:21" id="L9v-ZI-t2J"/>
                                                     </constraints>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                     <nil key="textColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Name Folder" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="WGZ-EN-FH4">
+                                                    <rect key="frame" x="131" y="11.5" width="202" height="21"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="202" id="4dk-ws-I8X"/>
+                                                    </constraints>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                    <color key="textColor" red="0.66422420739999999" green="0.66424006219999998" blue="0.66423153879999997" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                             </subviews>
                                             <constraints>
                                                 <constraint firstItem="KhN-tB-Ffk" firstAttribute="centerY" secondItem="LWg-Ap-SZT" secondAttribute="centerY" id="FwU-Kb-xj9"/>
                                                 <constraint firstItem="Ons-7Y-3Fq" firstAttribute="leading" secondItem="LWg-Ap-SZT" secondAttribute="leading" constant="16" id="Iv6-eL-YiH"/>
+                                                <constraint firstItem="WGZ-EN-FH4" firstAttribute="leading" secondItem="KhN-tB-Ffk" secondAttribute="trailing" constant="16" id="MqS-og-Zi4"/>
+                                                <constraint firstItem="WGZ-EN-FH4" firstAttribute="centerY" secondItem="LWg-Ap-SZT" secondAttribute="centerY" id="Pme-mh-hVo"/>
+                                                <constraint firstAttribute="trailing" secondItem="WGZ-EN-FH4" secondAttribute="trailing" constant="8" id="PvF-Ht-TSH"/>
                                                 <constraint firstItem="KhN-tB-Ffk" firstAttribute="leading" secondItem="Ons-7Y-3Fq" secondAttribute="trailing" constant="16" id="ZiM-EW-H8E"/>
-                                                <constraint firstAttribute="trailing" secondItem="KhN-tB-Ffk" secondAttribute="trailing" constant="230" id="Zwh-Cc-9ck"/>
                                                 <constraint firstItem="Ons-7Y-3Fq" firstAttribute="centerY" secondItem="LWg-Ap-SZT" secondAttribute="centerY" id="fSE-mr-WgX"/>
                                             </constraints>
                                         </tableViewCellContentView>
+                                        <connections>
+                                            <segue destination="RtU-Fc-Cqj" kind="show" identifier="SelectFolderSegue" id="4Pc-5F-lhh"/>
+                                        </connections>
                                     </tableViewCell>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" accessoryType="disclosureIndicator" indentationWidth="10" id="KdS-tA-jcB">
                                         <rect key="frame" x="0.0" y="545" width="375" height="44"/>
@@ -417,6 +432,8 @@
                     </navigationItem>
                     <size key="freeformSize" width="375" height="900"/>
                     <connections>
+                        <outlet property="folderLabel" destination="KhN-tB-Ffk" id="DR3-M9-eoK"/>
+                        <outlet property="nameFolderLabel" destination="WGZ-EN-FH4" id="52G-6X-yli"/>
                         <outlet property="noteDescriptionTextField" destination="XmP-ak-ttr" id="Yhi-lY-OU5"/>
                         <outlet property="noteImageView" destination="gCJ-UM-7x8" id="fdv-Qp-8I2"/>
                         <outlet property="noteNameTextField" destination="wZ2-WZ-ykE" id="gx0-Zx-bP9"/>
@@ -425,7 +442,43 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Jlg-Fn-l5o" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="4045" y="-57"/>
+            <point key="canvasLocation" x="4043.4375" y="-57.04225352112676"/>
+        </scene>
+        <!--Select Folder-->
+        <scene sceneID="HgG-1g-dn1">
+            <objects>
+                <tableViewController id="RtU-Fc-Cqj" customClass="SelectFolderTableViewController" customModule="LocationNotes" customModuleProvider="target" sceneMemberID="viewController">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="grouped" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="18" sectionFooterHeight="18" id="Tmr-pO-4En">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
+                        <prototypes>
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="SelectFolderCell" id="fH0-Za-GwN">
+                                <rect key="frame" x="0.0" y="55.5" width="320" height="44"/>
+                                <autoresizingMask key="autoresizingMask"/>
+                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="fH0-Za-GwN" id="oYK-Fn-8IY">
+                                    <rect key="frame" x="0.0" y="0.0" width="320" height="43.5"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                </tableViewCellContentView>
+                            </tableViewCell>
+                        </prototypes>
+                        <connections>
+                            <outlet property="dataSource" destination="RtU-Fc-Cqj" id="052-hv-bPE"/>
+                            <outlet property="delegate" destination="RtU-Fc-Cqj" id="i8P-6I-07j"/>
+                        </connections>
+                    </tableView>
+                    <navigationItem key="navigationItem" title="Select Folder" id="VYY-dh-mDc">
+                        <barButtonItem key="rightBarButtonItem" style="done" systemItem="done" id="nFs-Kj-a1M">
+                            <connections>
+                                <segue destination="D8k-5b-kvG" kind="unwind" identifier="unwindSegue" unwindAction="umwindSegueFromSelectFolderTableViewControllerWithSegue:" id="pEW-HK-vYl"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
+                </tableViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="4r0-C5-aCw" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <exit id="D8k-5b-kvG" userLabel="Exit" sceneMemberID="exit"/>
+            </objects>
+            <point key="canvasLocation" x="5139" y="-389"/>
         </scene>
         <!--Folders-->
         <scene sceneID="kvx-kB-pr1">
