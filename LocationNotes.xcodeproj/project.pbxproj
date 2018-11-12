@@ -23,6 +23,7 @@
 		3944B5382191F1DA00341788 /* Note+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3944B5302191F1DA00341788 /* Note+CoreDataProperties.swift */; };
 		3944B53B2191F24000341788 /* CoreDataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3944B53A2191F24000341788 /* CoreDataManager.swift */; };
 		39943051219855DE00260F49 /* SelectFolderTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 39943050219855DE00260F49 /* SelectFolderTableViewController.swift */; };
+		39BC02D32199D755000D471C /* MapViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 39BC02D22199D755000D471C /* MapViewController.swift */; };
 		39FCE167219700B900080A6D /* FolderTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 39FCE166219700B800080A6D /* FolderTableViewController.swift */; };
 		39FCE16921970C4A00080A6D /* NoteTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 39FCE16821970C4A00080A6D /* NoteTableViewController.swift */; };
 		39FCE16D2197343300080A6D /* FoldersTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 39FCE16C2197343300080A6D /* FoldersTableViewCell.swift */; };
@@ -49,6 +50,7 @@
 		3944B5302191F1DA00341788 /* Note+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Note+CoreDataProperties.swift"; sourceTree = "<group>"; };
 		3944B53A2191F24000341788 /* CoreDataManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreDataManager.swift; sourceTree = "<group>"; };
 		39943050219855DE00260F49 /* SelectFolderTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectFolderTableViewController.swift; sourceTree = "<group>"; };
+		39BC02D22199D755000D471C /* MapViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapViewController.swift; sourceTree = "<group>"; };
 		39FCE166219700B800080A6D /* FolderTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FolderTableViewController.swift; sourceTree = "<group>"; };
 		39FCE16821970C4A00080A6D /* NoteTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NoteTableViewController.swift; sourceTree = "<group>"; };
 		39FCE16C2197343300080A6D /* FoldersTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FoldersTableViewCell.swift; sourceTree = "<group>"; };
@@ -94,6 +96,7 @@
 				39FCE16821970C4A00080A6D /* NoteTableViewController.swift */,
 				39943050219855DE00260F49 /* SelectFolderTableViewController.swift */,
 				39FEE392219998C5007B38ED /* NoteMapViewController.swift */,
+				39BC02D22199D755000D471C /* MapViewController.swift */,
 				3944B4C62191EBE700341788 /* Main.storyboard */,
 				3944B4CC2191EBE800341788 /* Assets.xcassets */,
 				3944B4CE2191EBE800341788 /* LaunchScreen.storyboard */,
@@ -206,6 +209,7 @@
 				39943051219855DE00260F49 /* SelectFolderTableViewController.swift in Sources */,
 				3944B5342191F1DA00341788 /* Folder+CoreDataProperties.swift in Sources */,
 				3944B5362191F1DA00341788 /* ImageNote+CoreDataProperties.swift in Sources */,
+				39BC02D32199D755000D471C /* MapViewController.swift in Sources */,
 				39FCE16D2197343300080A6D /* FoldersTableViewCell.swift in Sources */,
 				3944B4C32191EBE700341788 /* AppDelegate.swift in Sources */,
 				39FEE393219998C5007B38ED /* NoteMapViewController.swift in Sources */,

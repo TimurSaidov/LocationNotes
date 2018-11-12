@@ -67,7 +67,7 @@
         <!--Map-->
         <scene sceneID="zbU-lU-fyw">
             <objects>
-                <viewController id="Fbw-I5-Ey0" sceneMemberID="viewController">
+                <viewController id="Fbw-I5-Ey0" customClass="MapViewController" customModule="LocationNotes" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="9x9-fN-K8O">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -86,6 +86,9 @@
                         <viewLayoutGuide key="safeArea" id="KRq-cz-S7W"/>
                     </view>
                     <navigationItem key="navigationItem" title="Map" id="fUt-Pj-NQC"/>
+                    <connections>
+                        <outlet property="mapView" destination="Fy6-AI-bda" id="e4B-SE-wfa"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="unf-xq-ami" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -244,7 +247,7 @@
         <!--Note-->
         <scene sceneID="slJ-cM-8cK">
             <objects>
-                <tableViewController id="Fsj-CH-U6k" customClass="NoteTableViewController" customModule="LocationNotes" customModuleProvider="target" sceneMemberID="viewController">
+                <tableViewController storyboardIdentifier="noteSIB" id="Fsj-CH-U6k" customClass="NoteTableViewController" customModule="LocationNotes" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="static" style="grouped" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="18" sectionFooterHeight="18" id="Whj-NS-DPg">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="900"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>

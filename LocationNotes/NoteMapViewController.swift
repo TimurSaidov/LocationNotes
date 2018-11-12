@@ -15,12 +15,18 @@ class NoteAnnotation: NSObject, MKAnnotation {
     var subtitle: String?
     
     init(note: Note) {
+        title = note.name
+        if let folder = note.folder {
+            subtitle = folder.name
+        } else {
+            subtitle = "-"
+        }
+        
         if note.locationActual != nil {
             coordinate = CLLocationCoordinate2D(latitude: note.locationActual!.lat, longitude: note.locationActual!.lon)
         } else {
             coordinate = CLLocationCoordinate2D(latitude: 0, longitude: 0)
         }
-        title = note.name
     }
 }
 
