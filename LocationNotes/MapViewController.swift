@@ -37,13 +37,17 @@ extension MapViewController: MKMapViewDelegate {
         let pin = MKPinAnnotationView(annotation: annotation, reuseIdentifier: nil)
         pin.animatesDrop = true
         pin.canShowCallout = true
-//        pin.rightCalloutAccessoryView = UIButton(type: UIButton.ButtonType.detailDisclosure)
+        pin.rightCalloutAccessoryView = UIButton(type: UIButton.ButtonType.detailDisclosure)
 
         return pin
     }
     
     // Метод для кнопки pin.rightCalloutAccessoryView, которая .detailDisclosure.
-//    func mapView(_ mapView: MKMapView, annotationView view: MKAnnotationView, calloutAccessoryControlTapped control: UIControl) {
-//
-//    }
+    func mapView(_ mapView: MKMapView, annotationView view: MKAnnotationView, calloutAccessoryControlTapped control: UIControl) {
+        let selectedNote = (view.annotation as! NoteAnnotation).note
+        let noteController = storyboard?.instantiateViewController(withIdentifier: "noteSIB") as! NoteTableViewController
+        noteController.note = selectedNote
+        
+        navigationController?.pushViewController(noteController, animated: true)
+    }
 }

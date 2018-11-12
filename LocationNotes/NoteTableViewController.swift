@@ -41,19 +41,23 @@ class NoteTableViewController: UITableViewController {
     }
     
     @IBAction func cancelButtonTapped(_ sender: UIBarButtonItem) {
-        if !justCreatedNote! {
-            if let inputFolder = inputFolder {
-                note?.folder = inputFolder
+        if let justCreatedNote = justCreatedNote {
+            if !justCreatedNote {
+                if let inputFolder = inputFolder {
+                    note?.folder = inputFolder
+                } else {
+                    note?.folder = inputNoteFolder
+                }
+                note?.locationActual = inputNoteLocation
             } else {
-                note?.folder = inputNoteFolder
+                CoreDataManager.shared.managedObjectContext.delete(note!)
             }
-            note?.locationActual = inputNoteLocation
-            dismiss(animated: true, completion: nil)
+            CoreDataManager.shared.saveContext()
         } else {
-            CoreDataManager.shared.managedObjectContext.delete(note!)
-            dismiss(animated: true, completion: nil)
+            note?.folder = inputNoteFolder
+            note?.locationActual = inputNoteLocation
         }
-        CoreDataManager.shared.saveContext()
+        navigationController?.popViewController(animated: true)
     }
     
     @IBAction func saveButtonTapped(_ sender: UIBarButtonItem) {
@@ -71,7 +75,7 @@ class NoteTableViewController: UITableViewController {
             
             CoreDataManager.shared.saveContext()
             
-            dismiss(animated: true, completion: nil)
+            navigationController?.popViewController(animated: true)
         }
     }
     

@@ -57,7 +57,7 @@
                         </barButtonItem>
                     </navigationItem>
                     <connections>
-                        <segue destination="Liq-tq-2vT" kind="presentation" identifier="NoteSegue" id="se8-Ym-gpJ"/>
+                        <segue destination="Fsj-CH-U6k" kind="show" identifier="NoteSegue" id="4DI-1f-8ib"/>
                     </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="kZy-fa-fjK" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -237,7 +237,7 @@
                         </barButtonItem>
                     </navigationItem>
                     <connections>
-                        <segue destination="Liq-tq-2vT" kind="presentation" identifier="NoteSegue" id="2Vw-ep-pKy"/>
+                        <segue destination="Fsj-CH-U6k" kind="show" identifier="NoteSegue" id="bNW-Qs-Oop"/>
                     </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="tOm-zc-B40" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -495,7 +495,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" mapType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="CAJ-KX-FSq">
-                                <rect key="frame" x="0.0" y="64" width="320" height="504"/>
+                                <rect key="frame" x="0.0" y="64" width="320" height="455"/>
                             </mapView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -571,30 +571,12 @@
             </objects>
             <point key="canvasLocation" x="169" y="942"/>
         </scene>
-        <!--Navigation Controller-->
-        <scene sceneID="Ql5-lV-rTD">
-            <objects>
-                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="Liq-tq-2vT" sceneMemberID="viewController">
-                    <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="Z0l-11-vkc">
-                        <rect key="frame" x="0.0" y="20" width="320" height="44"/>
-                        <autoresizingMask key="autoresizingMask"/>
-                    </navigationBar>
-                    <nil name="viewControllers"/>
-                    <connections>
-                        <segue destination="Fsj-CH-U6k" kind="relationship" relationship="rootViewController" id="afd-0p-b5j"/>
-                    </connections>
-                </navigationController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="igD-CD-PKj" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="3038" y="-57"/>
-        </scene>
     </scenes>
     <resources>
         <image name="directory" width="48" height="48"/>
         <image name="location" width="40" height="40"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="se8-Ym-gpJ"/>
+        <segue reference="bNW-Qs-Oop"/>
     </inferredMetricsTieBreakers>
 </document>

@@ -31,9 +31,12 @@ class LocationManager: NSObject, CLLocationManagerDelegate {
     
     func getCurrentCoordinate(block: ((LocationCoordinate) -> Void)?) {
         guard CLLocationManager.authorizationStatus() == .authorizedWhenInUse else {
-            // alert
-            
-            print("Пользоватеь не дал доступ к локации!")
+//            let alertController = UIAlertController(title: "Allow this app to access your location", message: "You don't allow to access to your location. Please allow in the setting", preferredStyle: .alert)
+//            let ok = UIAlertAction(title: "OK", style: .default, handler: nil)
+//            alertController.addAction(ok)
+//            present(alertController, animated: true, completion: nil)
+//
+//            print("Пользователь не дал доступ к локации!")
             return
         }
         
