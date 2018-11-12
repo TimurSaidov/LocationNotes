@@ -47,7 +47,7 @@ class NoteTableViewController: UITableViewController {
             } else {
                 note?.folder = inputNoteFolder
             }
-//            note?.locationActual = inputNoteLocation
+            note?.locationActual = inputNoteLocation
             dismiss(animated: true, completion: nil)
         } else {
             CoreDataManager.shared.managedObjectContext.delete(note!)
@@ -64,7 +64,6 @@ class NoteTableViewController: UITableViewController {
             
             note.name = noteNameTextField.text
             note.textDescription = noteDescriptionTextField.text
-//            note.locationActual = inputNoteLocation
             
             if isChangedImage {
                 note.imageActual = noteImageView.image
@@ -81,7 +80,7 @@ class NoteTableViewController: UITableViewController {
         
         inputFolder = folder // Пришедшая директория. nil, если заметка выбрана из Notes.
         inputNoteFolder = note?.folder // Директория пришедшей заметки.
-        inputNoteLocation = note?.locationActual
+        inputNoteLocation = note?.locationActual // Локация пришедшей заметки.
         
         if let inputNoteLocation = inputNoteLocation {
             print("Input Location - \(inputNoteLocation)")

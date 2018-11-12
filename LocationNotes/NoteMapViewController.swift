@@ -50,7 +50,12 @@ extension NoteMapViewController: MKMapViewDelegate {
         return pin
     }
     
-//    func mapView(_ mapView: MKMapView, annotationView view: MKAnnotationView, didChange newState: MKAnnotationView.DragState, fromOldState oldState: MKAnnotationView.DragState) {
-//        <#code#>
-//    }
+    // Метод, вызывающийся при перетаскивании иголки на карте. Вызывается в течение всего перетаскивания, поэтому необходима проверка на окончание перетаскивания иглы.
+    func mapView(_ mapView: MKMapView, annotationView view: MKAnnotationView, didChange newState: MKAnnotationView.DragState, fromOldState oldState: MKAnnotationView.DragState) {
+        if newState == .ending {
+            // Меняется локация заметки.
+            let newLocation = LocationCoordinate(lat: (view.annotation?.coordinate.latitude)!, lon: (view.annotation?.coordinate.longitude)!)
+            note?.locationActual = newLocation
+        }
+    }
 }
