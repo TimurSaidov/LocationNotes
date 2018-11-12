@@ -18,9 +18,12 @@ class FolderTableViewController: UITableViewController {
         return notes
     }
     var selectedNote: Note?
+    var justCreatedNote: Bool = false
     
     @IBAction func pushAddAction(_ sender: UIBarButtonItem) {
-        selectedNote = nil // Обнуляется, поскольку по возвращении с NoteTableViewController'а selectedNote остается тем же, каким был до перехода на NoteTableViewController.
+        selectedNote = Note.newNote(name: "", inFolder: folder)
+        justCreatedNote = true
+        selectedNote?.addCurrentLocation()
         performSegue(withIdentifier: "NoteSegue", sender: self)
     }
     
@@ -34,6 +37,8 @@ class FolderTableViewController: UITableViewController {
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(true)
+        
+        justCreatedNote = false
         
         print("FolderTableViewController - \(#function)")
         if let name = selectedNote?.name {
@@ -104,6 +109,7 @@ class FolderTableViewController: UITableViewController {
             let noteTableVC = dvc.viewControllers.first! as! NoteTableViewController
             noteTableVC.note = selectedNote
             noteTableVC.folder = folder
+            noteTableVC.justCreatedNote = justCreatedNote
         }
     }
 }

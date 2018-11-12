@@ -14,7 +14,9 @@ class NoteTableViewController: UITableViewController {
     var folder: Folder?
     var inputFolder: Folder?
     var inputNoteFolder: Folder?
+    var inputNoteLocation: LocationCoordinate?
     var isChangedImage: Bool = false
+    var justCreatedNote: Bool?
 
     @IBOutlet weak var noteImageView: UIImageView!
     @IBOutlet weak var noteNameTextField: UITextField!
@@ -39,12 +41,19 @@ class NoteTableViewController: UITableViewController {
     }
     
     @IBAction func cancelButtonTapped(_ sender: UIBarButtonItem) {
-        if let inputFolder = inputFolder {
-            note?.folder = inputFolder
+        if !justCreatedNote! {
+            if let inputFolder = inputFolder {
+                note?.folder = inputFolder
+            } else {
+                note?.folder = inputNoteFolder
+            }
+//            note?.locationActual = inputNoteLocation
+            dismiss(animated: true, completion: nil)
         } else {
-            note?.folder = inputNoteFolder
+            CoreDataManager.shared.managedObjectContext.delete(note!)
+            dismiss(animated: true, completion: nil)
         }
-        dismiss(animated: true, completion: nil)
+        CoreDataManager.shared.saveContext()
     }
     
     @IBAction func saveButtonTapped(_ sender: UIBarButtonItem) {
@@ -55,21 +64,16 @@ class NoteTableViewController: UITableViewController {
             
             note.name = noteNameTextField.text
             note.textDescription = noteDescriptionTextField.text
+//            note.locationActual = inputNoteLocation
             
             if isChangedImage {
                 note.imageActual = noteImageView.image
             }
-        } else {
-            let newNote = Note.newNote(name: noteNameTextField.text!, inFolder: folder)
             
-            newNote.addCurrentLocation()
-            newNote.textDescription = noteDescriptionTextField.text
-            newNote.imageActual = noteImageView.image
+            CoreDataManager.shared.saveContext()
+            
+            dismiss(animated: true, completion: nil)
         }
-        
-        CoreDataManager.shared.saveContext()
-        
-        dismiss(animated: true, completion: nil)
     }
     
     override func viewDidLoad() {
@@ -77,12 +81,26 @@ class NoteTableViewController: UITableViewController {
         
         inputFolder = folder // Пришедшая директория. nil, если заметка выбрана из Notes.
         inputNoteFolder = note?.folder // Директория пришедшей заметки.
-    
+        inputNoteLocation = note?.locationActual
+        
+        if let inputNoteLocation = inputNoteLocation {
+            print("Input Location - \(inputNoteLocation)")
+        } else {
+            print("Input Location - nil")
+        }
         if let note = note {
-            navigationItem.title = note.name
-            noteNameTextField.text = note.name
-            noteDescriptionTextField.text = note.textDescription
-            noteImageView.image = note.imageActual
+            if let location = note.location {
+                print(note.name!, location)
+            } else {
+                print(note.name! + ", nil")
+            }
+        }
+    
+        if note!.name != "" {
+            navigationItem.title = note!.name
+            noteNameTextField.text = note!.name
+            noteDescriptionTextField.text = note!.textDescription
+            noteImageView.image = note!.imageActual
         } else {
             navigationItem.title = "Note"
         }
@@ -162,6 +180,11 @@ class NoteTableViewController: UITableViewController {
             let dvc = segue.destination as! SelectFolderTableViewController
             dvc.note = note
             dvc.folder = folder
+        }
+        
+        if segue.identifier == "MapSegue" {
+            let dvc = segue.destination as! NoteMapViewController
+            dvc.note = note
         }
     }
 }

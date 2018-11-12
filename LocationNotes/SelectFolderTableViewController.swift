@@ -50,8 +50,6 @@ class SelectFolderTableViewController: UITableViewController {
                     } else {
                         cell.accessoryType = .checkmark
                     }
-                } else {
-                    cell.accessoryType = .checkmark
                 }
             }
         } else {
@@ -71,8 +69,6 @@ class SelectFolderTableViewController: UITableViewController {
                     } else {
                         cell.accessoryType = .none
                     }
-                } else {
-                    cell.accessoryType = .none
                 }
             }
         }

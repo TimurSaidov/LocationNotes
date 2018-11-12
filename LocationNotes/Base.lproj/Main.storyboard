@@ -389,9 +389,9 @@
                                                     </constraints>
                                                 </imageView>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Location" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="v4e-Mu-BYZ">
-                                                    <rect key="frame" x="62" y="11.5" width="66" height="21"/>
+                                                    <rect key="frame" x="62" y="11.5" width="271" height="21"/>
                                                     <constraints>
-                                                        <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="66" id="dbH-px-h6C"/>
+                                                        <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="271" id="8sD-GO-w74"/>
                                                     </constraints>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                     <nil key="textColor"/>
@@ -399,13 +399,16 @@
                                                 </label>
                                             </subviews>
                                             <constraints>
-                                                <constraint firstItem="v4e-Mu-BYZ" firstAttribute="leading" secondItem="K6p-Tj-Bkc" secondAttribute="trailing" constant="16" id="3gz-ox-RXh"/>
-                                                <constraint firstAttribute="trailing" secondItem="v4e-Mu-BYZ" secondAttribute="trailing" constant="213" id="A9S-Rr-K8e"/>
-                                                <constraint firstItem="v4e-Mu-BYZ" firstAttribute="centerY" secondItem="PiY-BD-yF9" secondAttribute="centerY" id="VyJ-5n-qmp"/>
+                                                <constraint firstItem="v4e-Mu-BYZ" firstAttribute="leading" secondItem="K6p-Tj-Bkc" secondAttribute="trailing" constant="16" id="Ubh-E1-K4c"/>
                                                 <constraint firstItem="K6p-Tj-Bkc" firstAttribute="leading" secondItem="PiY-BD-yF9" secondAttribute="leading" constant="16" id="Zrt-oF-6hV"/>
                                                 <constraint firstItem="K6p-Tj-Bkc" firstAttribute="centerY" secondItem="PiY-BD-yF9" secondAttribute="centerY" id="agq-Ef-JTO"/>
+                                                <constraint firstItem="v4e-Mu-BYZ" firstAttribute="centerY" secondItem="PiY-BD-yF9" secondAttribute="centerY" id="it0-bt-Cq0"/>
+                                                <constraint firstAttribute="trailing" secondItem="v4e-Mu-BYZ" secondAttribute="trailing" constant="8" id="wIH-jd-puC"/>
                                             </constraints>
                                         </tableViewCellContentView>
+                                        <connections>
+                                            <segue destination="eoM-uu-oSa" kind="show" identifier="MapSegue" id="VBV-ZO-pdQ"/>
+                                        </connections>
                                     </tableViewCell>
                                 </cells>
                             </tableViewSection>
@@ -479,6 +482,36 @@
                 <exit id="D8k-5b-kvG" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
             <point key="canvasLocation" x="5139" y="-389"/>
+        </scene>
+        <!--Map-->
+        <scene sceneID="7wL-jR-uZd">
+            <objects>
+                <viewController id="eoM-uu-oSa" customClass="NoteMapViewController" customModule="LocationNotes" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="55E-1z-d8Q">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" mapType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="CAJ-KX-FSq">
+                                <rect key="frame" x="0.0" y="64" width="320" height="504"/>
+                            </mapView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="xhb-Bm-1hz" firstAttribute="trailing" secondItem="CAJ-KX-FSq" secondAttribute="trailing" id="5rI-Uk-NiN"/>
+                            <constraint firstItem="CAJ-KX-FSq" firstAttribute="top" secondItem="xhb-Bm-1hz" secondAttribute="top" id="7Fa-xj-Fjr"/>
+                            <constraint firstItem="xhb-Bm-1hz" firstAttribute="bottom" secondItem="CAJ-KX-FSq" secondAttribute="bottom" id="Qns-w5-i6s"/>
+                            <constraint firstItem="CAJ-KX-FSq" firstAttribute="leading" secondItem="xhb-Bm-1hz" secondAttribute="leading" id="SuW-vc-jbb"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="xhb-Bm-1hz"/>
+                    </view>
+                    <navigationItem key="navigationItem" title="Map" id="Frg-t4-bNB"/>
+                    <connections>
+                        <outlet property="mapView" destination="CAJ-KX-FSq" id="4Df-3C-HdT"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="DfQ-gh-9YA" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="5138" y="275"/>
         </scene>
         <!--Folders-->
         <scene sceneID="kvx-kB-pr1">

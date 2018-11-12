@@ -43,22 +43,27 @@ public class Note: NSManagedObject {
     var locationActual: LocationCoordinate? {
         get {
             if self.location == nil { // self.location - св-во экземпляра Note.
+                print("У ЗАМЕТКИ НЕТ ЛОКАЦИИ")
                 return nil
             }
+            print("У ЗАМЕТКИ ЕСТЬ ЛОКАЦИЯ")
             return LocationCoordinate(lat: self.location!.latitude, lon: self.location!.longitude)
         }
         set(newValue) {
             if newValue == nil && self.location != nil {
                 // Удаление локации.
+                print("Удаление локации")
                 CoreDataManager.shared.managedObjectContext.delete(self.location!)
             }
             if newValue != nil && self.location != nil {
                 // Обновление локации.
+                print("Обновление локации")
                 self.location?.latitude = newValue!.lat
                 self.location?.longitude = newValue!.lon
             }
             if newValue != nil && self.location == nil {
                 // Создание локации.
+                print("Создание локации")
                 let newLocation = Location(context: CoreDataManager.shared.managedObjectContext)
                 newLocation.latitude = newValue!.lat
                 newLocation.longitude = newValue!.lon
