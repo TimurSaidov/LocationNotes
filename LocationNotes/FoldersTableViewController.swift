@@ -35,6 +35,8 @@ class FoldersTableViewController: UITableViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
+        LocationManager.shared.requsetAuthorization() // Разрешение на то, чтобы получать локацию во время использовния приложения.
+        
         // Uncomment the following line to preserve selection between presentations
         // self.clearsSelectionOnViewWillAppear = false
 
@@ -65,7 +67,7 @@ class FoldersTableViewController: UITableViewController {
     }
     
     override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        return 44
+        return 54
     }
 
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
