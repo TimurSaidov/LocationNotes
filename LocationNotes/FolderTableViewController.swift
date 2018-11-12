@@ -20,7 +20,7 @@ class FolderTableViewController: UITableViewController {
     var selectedNote: Note?
     
     @IBAction func pushAddAction(_ sender: UIBarButtonItem) {
-        selectedNote = nil // Обнуляется, поскольку по возвращении с NoteTableViewController'а selectedNote остается тем же, каким был до перехода на NoteTableViewController. 
+        selectedNote = nil // Обнуляется, поскольку по возвращении с NoteTableViewController'а selectedNote остается тем же, каким был до перехода на NoteTableViewController.
         performSegue(withIdentifier: "NoteSegue", sender: self)
     }
     

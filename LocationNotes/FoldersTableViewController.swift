@@ -35,7 +35,7 @@ class FoldersTableViewController: UITableViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        LocationManager.shared.requsetAuthorization() // Разрешение на то, чтобы получать локацию во время использовния приложения.
+        LocationManager.shared.requsetAuthorization() // Разрешение на то, чтобы получать локацию во время использования приложения.
         
         // Uncomment the following line to preserve selection between presentations
         // self.clearsSelectionOnViewWillAppear = false

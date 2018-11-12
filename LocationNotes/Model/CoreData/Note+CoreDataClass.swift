@@ -40,6 +40,40 @@ public class Note: NSManagedObject {
         }
     }
     
+    var locationActual: LocationCoordinate? {
+        get {
+            if self.location == nil { // self.location - св-во экземпляра Note.
+                return nil
+            }
+            return LocationCoordinate(lat: self.location!.latitude, lon: self.location!.longitude)
+        }
+        set(newValue) {
+            if newValue == nil && self.location != nil {
+                // Удаление локации.
+                CoreDataManager.shared.managedObjectContext.delete(self.location!)
+            }
+            if newValue != nil && self.location != nil {
+                // Обновление локации.
+                self.location?.latitude = newValue!.lat
+                self.location?.longitude = newValue!.lon
+            }
+            if newValue != nil && self.location == nil {
+                // Создание локации.
+                let newLocation = Location(context: CoreDataManager.shared.managedObjectContext)
+                newLocation.latitude = newValue!.lat
+                newLocation.longitude = newValue!.lon
+                self.location = newLocation
+            }
+        }
+    }
+    
+    func addCurrentLocation() {
+        LocationManager.shared.getCurrentCoordinate { (location) in
+            self.locationActual = location
+            print("Получена новая локация: \(location)")
+        }
+    }
+    
     class func newNote(name: String, inFolder: Folder?) -> Note {
         let newNote = Note(context: CoreDataManager.shared.managedObjectContext)
         

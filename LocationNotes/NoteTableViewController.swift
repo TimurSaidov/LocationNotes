@@ -62,6 +62,7 @@ class NoteTableViewController: UITableViewController {
         } else {
             let newNote = Note.newNote(name: noteNameTextField.text!, inFolder: folder)
             
+            newNote.addCurrentLocation()
             newNote.textDescription = noteDescriptionTextField.text
             newNote.imageActual = noteImageView.image
         }
