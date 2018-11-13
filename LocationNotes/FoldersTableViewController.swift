@@ -86,23 +86,32 @@ class FoldersTableViewController: UITableViewController {
     override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
         if editingStyle == .delete {
             // Delete the row from the data source
-            let folder = folders[indexPath.row]
+            let alertController = UIAlertController(title: "Do you want to delete permanently this folder?".localize(), message: "If you delete the folder, you delete all notes including in this folder permanentlly".localize(), preferredStyle: .alert)
             
-            for note in notes {
-                if note.folder == folder {
-                    CoreDataManager.shared.managedObjectContext.delete(note)
+            let delete = UIAlertAction(title: "Delete".localize(), style: .destructive) { (action) in
+                let folder = folders[indexPath.row]
+                
+                for note in notes {
+                    if note.folder == folder {
+                        // Удаление всех заметок в удаленной папке.
+                        CoreDataManager.shared.managedObjectContext.delete(note)
+                    }
                 }
+                
+                CoreDataManager.shared.managedObjectContext.delete(folder)
+                CoreDataManager.shared.saveContext()
+                
+                tableView.deleteRows(at: [indexPath], with: .fade) // Вызов этого метода, вызывает еще и методы перезагрузки таблицы: numberOfSections(in:) и tableView(_:numberOfRowsInSection:), а поскольку folders - глобальная переменная, в которую данные загружаются из контекста, и которая вычисляется каждый раз, когда ее вызывают.
+                
+                print("Delete folder - \(#function)")
             }
+            let cancel = UIAlertAction(title: "Cancel".localize(), style: .cancel, handler: nil)
             
-            CoreDataManager.shared.managedObjectContext.delete(folder)
-            CoreDataManager.shared.saveContext()
+            alertController.addAction(delete)
+            alertController.addAction(cancel)
             
-            tableView.deleteRows(at: [indexPath], with: .fade) // Вызов этого метода, вызывает еще и методы перезагрузки таблицы: numberOfSections(in:) и tableView(_:numberOfRowsInSection:), а поскольку folders - глобальная переменная, в которую данные загружаются из контекста, и которая вычисляется каждый раз, когда ее вызывают.
-            
-            print("Delete folder - \(#function)")
-        } else if editingStyle == .insert {
-            // Create a new instance of the appropriate class, insert it into the array, and add a new row to the table view
-        }    
+            present(alertController, animated: true, completion: nil)
+        }
     }
     
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {

@@ -16,3 +16,5 @@
 "Camera" = "Камера";
 "Library" = "Библиотека";
 "Delete" = "Удалить";
+"Do you want to delete permanently this folder?" = "Вы действительно хотите удалить папку безвозвратно?";
+"If you delete the folder, you delete all notes including in this folder permanentlly" = "Удалив папку, Вы удалите все заметки, хранящиеся в ней, безвозвратно";
