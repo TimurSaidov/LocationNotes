@@ -37,6 +37,8 @@ class FoldersTableViewController: UITableViewController {
 
         LocationManager.shared.requsetAuthorization() // Разрешение на то, чтобы получать локацию во время использования приложения.
         
+        tableView.tableFooterView = UIView(frame: CGRect.zero)
+        
         // Uncomment the following line to preserve selection between presentations
         // self.clearsSelectionOnViewWillAppear = false
 
@@ -85,6 +87,13 @@ class FoldersTableViewController: UITableViewController {
         if editingStyle == .delete {
             // Delete the row from the data source
             let folder = folders[indexPath.row]
+            
+            for note in notes {
+                if note.folder == folder {
+                    CoreDataManager.shared.managedObjectContext.delete(note)
+                }
+            }
+            
             CoreDataManager.shared.managedObjectContext.delete(folder)
             CoreDataManager.shared.saveContext()
             

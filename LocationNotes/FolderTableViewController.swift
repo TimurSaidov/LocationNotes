@@ -33,6 +33,8 @@ class FolderTableViewController: UITableViewController {
         if let folder = folder {
             navigationItem.title = folder.name
         }
+        
+        tableView.tableFooterView = UIView(frame: CGRect.zero)
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -61,17 +63,28 @@ class FolderTableViewController: UITableViewController {
     }
 
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "CellNote", for: indexPath)
+        let cell = tableView.dequeueReusableCell(withIdentifier: "CellNote", for: indexPath) as! FolderTableViewCell
 
         let note = notesActual[indexPath.row]
-        cell.textLabel?.text = note.name
-        cell.detailTextLabel?.text = FormatterDate.df.string(from: note.dateUpdate! as Date)
+        cell.noteNameLabel.text = note.name
+        cell.noteDateUpdateLabel.text = FormatterDate.df.string(from: note.dateUpdate! as Date)
+        
+        if note.locationActual != nil {
+            cell.noteLocationLabel.isHidden = false
+        } else {
+            cell.noteLocationLabel.isHidden = true
+        }
         
         if let imageSmall = note.imageSmall {
-            cell.imageView?.image = UIImage(data: imageSmall as Data)
+            cell.noteImageView.image = UIImage(data: imageSmall as Data)
         } else {
-            cell.imageView?.image = nil
+            cell.noteImageView.image = UIImage(named: "noImage")
         }
+        
+        cell.noteImageView.layer.cornerRadius = 20
+        cell.noteImageView.clipsToBounds = true
+        cell.noteImageView.layer.borderWidth = 1
+        cell.noteImageView.layer.borderColor = #colorLiteral(red: 0.8374180198, green: 0.8374378085, blue: 0.8374271393, alpha: 1)
 
         return cell
     }
