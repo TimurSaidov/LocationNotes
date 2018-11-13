@@ -17,6 +17,23 @@ class MapViewController: UIViewController {
         super.viewDidLoad()
         
         mapView.delegate = self
+        mapView.showsUserLocation = true // Текущая локация пользователя.
+        
+        let ltgr = UILongPressGestureRecognizer(target: self, action: #selector(handleLongTap))
+        mapView.gestureRecognizers = [ltgr]
+    }
+    
+    @objc func handleLongTap(recognizer: UIGestureRecognizer) {
+        guard recognizer.state == .began else { return }
+        
+        let point = recognizer.location(in: mapView)
+        let coordinates = mapView.convert(point, toCoordinateFrom: mapView)
+        let newLocation = LocationCoordinate(lat: coordinates.latitude, lon: coordinates.longitude)
+        
+        let newNote = Note.newNote(name: "", inFolder: nil)
+        newNote.locationActual = LocationCoordinate(lat: newLocation.lat, lon: newLocation.lon)
+
+        addOrEditNoteFromMap(note: newNote, justCreatedNote: true)
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -34,6 +51,13 @@ class MapViewController: UIViewController {
 
 extension MapViewController: MKMapViewDelegate {
     func mapView(_ mapView: MKMapView, viewFor annotation: MKAnnotation) -> MKAnnotationView? {
+        print(Thread.current)
+        
+        if annotation is MKUserLocation {
+            mapView.setCenter(annotation.coordinate, animated: true)
+            return nil
+        }
+        
         let pin = MKPinAnnotationView(annotation: annotation, reuseIdentifier: nil)
         pin.animatesDrop = true
         pin.canShowCallout = true
@@ -45,8 +69,16 @@ extension MapViewController: MKMapViewDelegate {
     // Метод для кнопки pin.rightCalloutAccessoryView, которая .detailDisclosure.
     func mapView(_ mapView: MKMapView, annotationView view: MKAnnotationView, calloutAccessoryControlTapped control: UIControl) {
         let selectedNote = (view.annotation as! NoteAnnotation).note
+        
+        addOrEditNoteFromMap(note: selectedNote, justCreatedNote: false)
+    }
+}
+
+extension MapViewController {
+    func addOrEditNoteFromMap(note: Note, justCreatedNote: Bool) {
         let noteController = storyboard?.instantiateViewController(withIdentifier: "noteSIB") as! NoteTableViewController
-        noteController.note = selectedNote
+        noteController.note = note
+        noteController.justCreatedNote = justCreatedNote
         
         navigationController?.pushViewController(noteController, animated: true)
     }

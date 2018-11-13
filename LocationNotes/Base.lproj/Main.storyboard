@@ -438,7 +438,9 @@
                     </navigationItem>
                     <size key="freeformSize" width="375" height="900"/>
                     <connections>
+                        <outlet property="folderImageView" destination="Ons-7Y-3Fq" id="J1F-d3-fyS"/>
                         <outlet property="folderLabel" destination="KhN-tB-Ffk" id="DR3-M9-eoK"/>
+                        <outlet property="locationImageView" destination="K6p-Tj-Bkc" id="QOl-93-aXi"/>
                         <outlet property="nameFolderLabel" destination="WGZ-EN-FH4" id="52G-6X-yli"/>
                         <outlet property="noteDescriptionTextField" destination="XmP-ak-ttr" id="Yhi-lY-OU5"/>
                         <outlet property="noteImageView" destination="gCJ-UM-7x8" id="fdv-Qp-8I2"/>
@@ -448,7 +450,7 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Jlg-Fn-l5o" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="4043.4375" y="-57.04225352112676"/>
+            <point key="canvasLocation" x="3072" y="-57"/>
         </scene>
         <!--Select Folder-->
         <scene sceneID="HgG-1g-dn1">
@@ -484,7 +486,7 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="4r0-C5-aCw" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <exit id="D8k-5b-kvG" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
-            <point key="canvasLocation" x="5139" y="-389"/>
+            <point key="canvasLocation" x="4112" y="-389"/>
         </scene>
         <!--Map-->
         <scene sceneID="7wL-jR-uZd">
@@ -514,7 +516,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="DfQ-gh-9YA" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="5138" y="275"/>
+            <point key="canvasLocation" x="4112" y="275"/>
         </scene>
         <!--Folders-->
         <scene sceneID="kvx-kB-pr1">

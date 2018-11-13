@@ -25,6 +25,9 @@ class NoteTableViewController: UITableViewController {
     @IBOutlet weak var folderLabel: UILabel!
     @IBOutlet weak var nameFolderLabel: UILabel!
     
+    @IBOutlet weak var folderImageView: UIImageView!
+    @IBOutlet weak var locationImageView: UIImageView!
+    
     @IBAction func umwindSegueFromSelectFolderTableViewController(segue: UIStoryboardSegue) {
         if segue.identifier == "unwindSegue" {
             let svc = segue.source as! SelectFolderTableViewController
@@ -81,6 +84,11 @@ class NoteTableViewController: UITableViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+
+        locationImageView.layer.cornerRadius = 15
+        locationImageView.clipsToBounds = true
+        locationImageView.layer.borderWidth = 1
+        locationImageView.layer.borderColor = #colorLiteral(red: 0.8374180198, green: 0.8374378085, blue: 0.8374271393, alpha: 1) // UIColor.gray.cgColor
         
         inputFolder = folder // Пришедшая директория. nil, если заметка выбрана из Notes.
         inputNoteFolder = note?.folder // Директория пришедшей заметки.
