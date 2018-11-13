@@ -26,6 +26,7 @@
 		39BC02D32199D755000D471C /* MapViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 39BC02D22199D755000D471C /* MapViewController.swift */; };
 		39D76590219B00FF003BA939 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 39D7658E219B00FF003BA939 /* Localizable.strings */; };
 		39D76592219B01F3003BA939 /* LocalizationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 39D76591219B01F3003BA939 /* LocalizationManager.swift */; };
+		39D76597219B079C003BA939 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 39D76595219B079C003BA939 /* InfoPlist.strings */; };
 		39FCE167219700B900080A6D /* FolderTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 39FCE166219700B800080A6D /* FolderTableViewController.swift */; };
 		39FCE16921970C4A00080A6D /* NoteTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 39FCE16821970C4A00080A6D /* NoteTableViewController.swift */; };
 		39FCE16D2197343300080A6D /* FoldersTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 39FCE16C2197343300080A6D /* FoldersTableViewCell.swift */; };
@@ -57,6 +58,7 @@
 		39D7658B219AFCDB003BA939 /* ru */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ru; path = ru.lproj/LaunchScreen.strings; sourceTree = "<group>"; };
 		39D7658F219B00FF003BA939 /* ru */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ru; path = ru.lproj/Localizable.strings; sourceTree = "<group>"; };
 		39D76591219B01F3003BA939 /* LocalizationManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocalizationManager.swift; sourceTree = "<group>"; };
+		39D76596219B079C003BA939 /* ru */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ru; path = LocationNotes/ru.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		39FCE166219700B800080A6D /* FolderTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FolderTableViewController.swift; sourceTree = "<group>"; };
 		39FCE16821970C4A00080A6D /* NoteTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NoteTableViewController.swift; sourceTree = "<group>"; };
 		39FCE16C2197343300080A6D /* FoldersTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FoldersTableViewCell.swift; sourceTree = "<group>"; };
@@ -108,6 +110,7 @@
 				3944B4CE2191EBE800341788 /* LaunchScreen.storyboard */,
 				3944B4D12191EBE800341788 /* Info.plist */,
 				39D7658E219B00FF003BA939 /* Localizable.strings */,
+				39D76595219B079C003BA939 /* InfoPlist.strings */,
 			);
 			path = LocationNotes;
 			sourceTree = "<group>";
@@ -202,6 +205,7 @@
 				3944B4D02191EBE800341788 /* LaunchScreen.storyboard in Resources */,
 				3944B4CD2191EBE800341788 /* Assets.xcassets in Resources */,
 				3944B4C82191EBE700341788 /* Main.storyboard in Resources */,
+				39D76597219B079C003BA939 /* InfoPlist.strings in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -262,6 +266,14 @@
 				39D7658F219B00FF003BA939 /* ru */,
 			);
 			name = Localizable.strings;
+			sourceTree = "<group>";
+		};
+		39D76595219B079C003BA939 /* InfoPlist.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				39D76596219B079C003BA939 /* ru */,
+			);
+			name = InfoPlist.strings;
 			sourceTree = "<group>";
 		};
 /* End PBXVariantGroup section */
