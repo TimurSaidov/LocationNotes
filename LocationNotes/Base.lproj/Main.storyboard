@@ -90,6 +90,7 @@
                     </tableView>
                     <navigationItem key="navigationItem" title="Notes" id="anw-yL-oBQ">
                         <barButtonItem key="rightBarButtonItem" systemItem="add" id="NgA-ma-DfM">
+                            <color key="tintColor" red="1" green="0.57810515169999999" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                             <connections>
                                 <action selector="pushAddAction:" destination="41o-e7-UhF" id="N3h-Uf-Lym"/>
                             </connections>
@@ -112,7 +113,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" mapType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="Fy6-AI-bda">
-                                <rect key="frame" x="0.0" y="64" width="320" height="455"/>
+                                <rect key="frame" x="0.0" y="111" width="320" height="408"/>
                             </mapView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -137,10 +138,20 @@
         <scene sceneID="jrg-ic-irw">
             <objects>
                 <navigationController id="9J4-Rf-aLs" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Notes" id="YFA-dR-abR"/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="ieG-m5-j8r">
-                        <rect key="frame" x="0.0" y="20" width="320" height="44"/>
+                    <tabBarItem key="tabBarItem" title="Notes" image="notesTab" id="YFA-dR-abR"/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" largeTitles="YES" id="ieG-m5-j8r">
+                        <rect key="frame" x="0.0" y="20" width="320" height="91"/>
                         <autoresizingMask key="autoresizingMask"/>
+                        <color key="backgroundColor" red="1" green="0.57810515169999999" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <color key="tintColor" red="1" green="0.57810515169999999" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <textAttributes key="titleTextAttributes">
+                            <color key="textColor" red="1" green="0.57810515169999999" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                            <color key="textShadowColor" red="1" green="0.57810515169999999" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        </textAttributes>
+                        <textAttributes key="largeTitleTextAttributes">
+                            <color key="textColor" red="1" green="0.57810515169999999" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                            <color key="textShadowColor" red="1" green="0.57810515169999999" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        </textAttributes>
                     </navigationBar>
                     <connections>
                         <segue destination="41o-e7-UhF" kind="relationship" relationship="rootViewController" id="xRL-40-1WK"/>
@@ -216,6 +227,7 @@
                     </tableView>
                     <navigationItem key="navigationItem" title="Folders" id="3tx-0I-BBm">
                         <barButtonItem key="rightBarButtonItem" systemItem="add" id="Aih-Gd-7V8">
+                            <color key="tintColor" red="1" green="0.57810515169999999" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                             <connections>
                                 <action selector="addButtonAction:" destination="cFK-G3-21u" id="Mi4-V0-mdU"/>
                             </connections>
@@ -297,6 +309,7 @@
                                 <connections>
                                     <outlet property="noteDateUpdateLabel" destination="EgL-oy-m55" id="YP5-zX-I3b"/>
                                     <outlet property="noteImageView" destination="d6M-mw-eHS" id="xNE-bn-Q29"/>
+                                    <outlet property="noteLocationLabel" destination="VD6-ke-4M1" id="dbp-cq-h48"/>
                                     <outlet property="noteNameLabel" destination="cSb-0n-TfS" id="tGt-O7-ylk"/>
                                 </connections>
                             </tableViewCell>
@@ -308,6 +321,7 @@
                     </tableView>
                     <navigationItem key="navigationItem" title="Folder" id="lxF-MG-WBH">
                         <barButtonItem key="rightBarButtonItem" systemItem="add" id="TJW-Y6-cCx">
+                            <color key="tintColor" red="1" green="0.57810515169999999" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                             <connections>
                                 <action selector="pushAddAction:" destination="Oan-tF-QRW" id="Fd9-Rv-nAV"/>
                             </connections>
@@ -505,7 +519,7 @@
                             <outlet property="delegate" destination="Fsj-CH-U6k" id="udg-3n-ev4"/>
                         </connections>
                     </tableView>
-                    <navigationItem key="navigationItem" title="Note" id="7T8-5L-YvI">
+                    <navigationItem key="navigationItem" title="Note" largeTitleDisplayMode="never" id="7T8-5L-YvI">
                         <barButtonItem key="leftBarButtonItem" systemItem="cancel" id="3EF-eD-jrf">
                             <connections>
                                 <action selector="cancelButtonTapped:" destination="Fsj-CH-U6k" id="2Ue-Gm-WpJ"/>
@@ -517,7 +531,11 @@
                                     <action selector="saveButtonTapped:" destination="Fsj-CH-U6k" id="Een-cy-A7h"/>
                                 </connections>
                             </barButtonItem>
-                            <barButtonItem systemItem="action" id="UnG-3U-PEg"/>
+                            <barButtonItem systemItem="action" id="UnG-3U-PEg">
+                                <connections>
+                                    <action selector="shareButtonTapped:" destination="Fsj-CH-U6k" id="Zbx-sB-mWu"/>
+                                </connections>
+                            </barButtonItem>
                         </rightBarButtonItems>
                     </navigationItem>
                     <size key="freeformSize" width="375" height="900"/>
@@ -530,6 +548,7 @@
                         <outlet property="noteImageView" destination="gCJ-UM-7x8" id="fdv-Qp-8I2"/>
                         <outlet property="noteNameTextField" destination="wZ2-WZ-ykE" id="gx0-Zx-bP9"/>
                         <outlet property="saveButton" destination="Asr-aq-6BI" id="v7U-O8-e3j"/>
+                        <outlet property="shareButton" destination="UnG-3U-PEg" id="45d-sZ-qdl"/>
                     </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Jlg-Fn-l5o" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -606,10 +625,20 @@
         <scene sceneID="kvx-kB-pr1">
             <objects>
                 <navigationController id="5Qj-hB-ckQ" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Folders" id="VFL-UX-3VZ"/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="8yp-sk-QyA">
-                        <rect key="frame" x="0.0" y="20" width="320" height="44"/>
+                    <tabBarItem key="tabBarItem" title="Folders" image="directoryTab" id="VFL-UX-3VZ"/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" largeTitles="YES" id="8yp-sk-QyA">
+                        <rect key="frame" x="0.0" y="20" width="320" height="91"/>
                         <autoresizingMask key="autoresizingMask"/>
+                        <color key="backgroundColor" red="1" green="0.57810515169999999" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <color key="tintColor" red="1" green="0.57810515169999999" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <textAttributes key="titleTextAttributes">
+                            <color key="textColor" red="1" green="0.57810515169999999" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                            <color key="textShadowColor" red="1" green="0.57810515169999999" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        </textAttributes>
+                        <textAttributes key="largeTitleTextAttributes">
+                            <color key="textColor" red="1" green="0.57810515169999999" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                            <color key="textShadowColor" red="1" green="0.57810515169999999" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        </textAttributes>
                     </navigationBar>
                     <connections>
                         <segue destination="cFK-G3-21u" kind="relationship" relationship="rootViewController" id="hoV-fZ-FBg"/>
@@ -626,7 +655,8 @@
                     <tabBar key="tabBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="YPn-4e-Y9s">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="49"/>
                         <autoresizingMask key="autoresizingMask"/>
-                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <color key="barTintColor" red="0.98905456852791873" green="0.89225845160304951" blue="0.77080396664590711" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <color key="selectedImageTintColor" red="1" green="0.57810515169999999" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                     </tabBar>
                     <connections>
                         <segue destination="5Qj-hB-ckQ" kind="relationship" relationship="viewControllers" id="zby-Fl-dG8"/>
@@ -642,11 +672,15 @@
         <scene sceneID="4yx-QC-3a7">
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="JbL-Yc-BgD" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Map" id="oCd-yq-sJD"/>
+                    <tabBarItem key="tabBarItem" title="Map" image="mapTab" id="oCd-yq-sJD"/>
                     <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="kdK-Dh-h4g">
-                        <rect key="frame" x="0.0" y="20" width="320" height="44"/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" largeTitles="YES" id="kdK-Dh-h4g">
+                        <rect key="frame" x="0.0" y="20" width="320" height="91"/>
                         <autoresizingMask key="autoresizingMask"/>
+                        <color key="backgroundColor" red="1" green="0.57810515169999999" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <textAttributes key="largeTitleTextAttributes">
+                            <color key="textColor" red="1" green="0.57810515169999999" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        </textAttributes>
                     </navigationBar>
                     <nil name="viewControllers"/>
                     <connections>
@@ -660,10 +694,13 @@
     </scenes>
     <resources>
         <image name="directory" width="48" height="48"/>
+        <image name="directoryTab" width="20" height="20"/>
         <image name="location" width="40" height="40"/>
+        <image name="mapTab" width="20" height="20"/>
         <image name="noImageBig" width="175" height="175"/>
+        <image name="notesTab" width="20" height="20"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="4DI-1f-8ib"/>
+        <segue reference="bNW-Qs-Oop"/>
     </inferredMetricsTieBreakers>
 </document>

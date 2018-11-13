@@ -22,6 +22,7 @@ class NoteTableViewController: UITableViewController {
     @IBOutlet weak var noteNameTextField: UITextField!
     @IBOutlet weak var noteDescriptionTextField: UITextView!
     @IBOutlet weak var saveButton: UIBarButtonItem!
+    @IBOutlet weak var shareButton: UIBarButtonItem!
     @IBOutlet weak var folderLabel: UILabel!
     @IBOutlet weak var nameFolderLabel: UILabel!
     
@@ -82,8 +83,24 @@ class NoteTableViewController: UITableViewController {
         }
     }
     
+    @IBAction func shareButtonTapped(_ sender: UIBarButtonItem) {
+        var activityItems: [Any] = []
+        
+        activityItems.append(note?.name ?? "")
+        activityItems.append(note?.textDescription ?? "")
+        if let image = note?.imageActual {
+            activityItems.append(image)
+        }
+        
+        let activityController = UIActivityViewController(activityItems: activityItems, applicationActivities: nil)
+        
+        present(activityController, animated: true, completion: nil)
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        navigationItem.largeTitleDisplayMode = .never
 
         locationImageView.layer.cornerRadius = 15
         locationImageView.clipsToBounds = true
@@ -116,6 +133,7 @@ class NoteTableViewController: UITableViewController {
             navigationItem.title = "Note".localize() 
         }
         
+        shareButtonState()
         saveButtonState()
     }
     
@@ -181,6 +199,14 @@ class NoteTableViewController: UITableViewController {
             saveButton.isEnabled = false
         } else {
             saveButton.isEnabled = true
+        }
+    }
+    
+    func shareButtonState() {
+        if !justCreatedNote! {
+            shareButton.isEnabled = true
+        } else {
+            shareButton.isEnabled = false
         }
     }
     
