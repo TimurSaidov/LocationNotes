@@ -408,7 +408,7 @@
                                             <rect key="frame" x="0.0" y="0.0" width="375" height="174.5"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" text="Title" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="XmP-ak-ttr">
+                                                <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="XmP-ak-ttr">
                                                     <rect key="frame" x="3" y="0.0" width="369" height="174.5"/>
                                                     <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="14"/>
@@ -472,7 +472,7 @@
                                             </constraints>
                                         </tableViewCellContentView>
                                         <connections>
-                                            <segue destination="RtU-Fc-Cqj" kind="show" identifier="SelectFolderSegue" id="4Pc-5F-lhh"/>
+                                            <segue destination="6y1-09-H2A" kind="show" identifier="SelectFolderSegue" id="4Pc-5F-lhh"/>
                                         </connections>
                                     </tableViewCell>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" accessoryType="disclosureIndicator" indentationWidth="10" id="KdS-tA-jcB">
@@ -579,9 +579,16 @@
                         </connections>
                     </tableView>
                     <navigationItem key="navigationItem" title="Select Folder" id="VYY-dh-mDc">
-                        <barButtonItem key="rightBarButtonItem" style="done" systemItem="done" id="nFs-Kj-a1M">
+                        <barButtonItem key="leftBarButtonItem" systemItem="cancel" id="MKU-Of-XcT">
+                            <color key="tintColor" red="1" green="0.57810515169999999" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                             <connections>
-                                <segue destination="D8k-5b-kvG" kind="unwind" identifier="unwindSegue" unwindAction="umwindSegueFromSelectFolderTableViewControllerWithSegue:" id="pEW-HK-vYl"/>
+                                <segue destination="D8k-5b-kvG" kind="unwind" identifier="unwindCancelSegue" unwindAction="umwindSegueFromSelectFolderTableViewControllerWithSegue:" id="rpU-ps-Wcb"/>
+                            </connections>
+                        </barButtonItem>
+                        <barButtonItem key="rightBarButtonItem" style="done" systemItem="done" id="nFs-Kj-a1M">
+                            <color key="tintColor" red="1" green="0.57810515169999999" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                            <connections>
+                                <segue destination="D8k-5b-kvG" kind="unwind" identifier="unwindDoneSegue" unwindAction="umwindSegueFromSelectFolderTableViewControllerWithSegue:" id="pEW-HK-vYl"/>
                             </connections>
                         </barButtonItem>
                     </navigationItem>
@@ -589,7 +596,7 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="4r0-C5-aCw" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <exit id="D8k-5b-kvG" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
-            <point key="canvasLocation" x="4112" y="-389"/>
+            <point key="canvasLocation" x="5109.375" y="-389.78873239436621"/>
         </scene>
         <!--Map-->
         <scene sceneID="7wL-jR-uZd">
@@ -690,6 +697,34 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="SEM-0v-50L" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="169" y="942"/>
+        </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="106-fL-PxT">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="6y1-09-H2A" sceneMemberID="viewController">
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="S02-rh-3uO">
+                        <rect key="frame" x="0.0" y="20" width="320" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                        <color key="backgroundColor" red="1" green="0.57810515169999999" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <color key="tintColor" red="1" green="0.57810515169999999" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <textAttributes key="titleTextAttributes">
+                            <color key="textColor" red="1" green="0.57810515169999999" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                            <color key="textShadowColor" red="1" green="0.57810515169999999" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        </textAttributes>
+                        <textAttributes key="largeTitleTextAttributes">
+                            <color key="textColor" red="1" green="0.57810515169999999" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                            <color key="textShadowColor" red="1" green="0.57810515169999999" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        </textAttributes>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="RtU-Fc-Cqj" kind="relationship" relationship="rootViewController" id="a85-MR-az6"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="B7p-F3-6FI" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="4111.875" y="-389.78873239436621"/>
         </scene>
     </scenes>
     <resources>

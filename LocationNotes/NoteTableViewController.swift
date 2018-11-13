@@ -30,13 +30,21 @@ class NoteTableViewController: UITableViewController {
     @IBOutlet weak var locationImageView: UIImageView!
     
     @IBAction func umwindSegueFromSelectFolderTableViewController(segue: UIStoryboardSegue) {
-        if segue.identifier == "unwindSegue" {
+        if segue.identifier == "unwindDoneSegue" {
+            print("Unwind Done Segue")
+            
             let svc = segue.source as! SelectFolderTableViewController
             folder = svc.folder
             
             if let note = note {
                 note.folder = svc.note?.folder
             }
+        }
+        
+        if segue.identifier == "unwindCancelSegue" {
+            print("Unwind Cancel Segue")
+            
+            note?.folder = inputNoteFolder
         }
     }
     
@@ -214,7 +222,8 @@ class NoteTableViewController: UITableViewController {
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "SelectFolderSegue" {
-            let dvc = segue.destination as! SelectFolderTableViewController
+            let navigationController = segue.destination as! UINavigationController
+            let dvc = navigationController.viewControllers.first! as! SelectFolderTableViewController
             dvc.note = note
             dvc.folder = folder
         }
