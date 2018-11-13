@@ -11,12 +11,12 @@ import UIKit
 class FoldersTableViewController: UITableViewController {
 
     @IBAction func addButtonAction(_ sender: UIBarButtonItem) {
-        let alertConroller = UIAlertController(title: "Create new folder", message: "", preferredStyle: .alert)
+        let alertConroller = UIAlertController(title: "Create new folder".localize(), message: "", preferredStyle: .alert)
         alertConroller.addTextField { (textField) in
-            textField.placeholder = "Folder name"
+            textField.placeholder = "Folder name".localize()
         }
         
-        let createAction = UIAlertAction(title: "Create", style: .default) { (action) in
+        let createAction = UIAlertAction(title: "Create".localize(), style: .default) { (action) in
             guard let folderName = alertConroller.textFields![0].text else { return }
             guard folderName != "" else { return }
             
@@ -25,7 +25,7 @@ class FoldersTableViewController: UITableViewController {
             CoreDataManager.shared.saveContext()
             self.tableView.reloadData()
         }
-        let cancel = UIAlertAction(title: "Cancel", style: .cancel, handler: nil)
+        let cancel = UIAlertAction(title: "Cancel".localize(), style: .cancel, handler: nil)
         
         alertConroller.addAction(createAction)
         alertConroller.addAction(cancel)
@@ -75,7 +75,7 @@ class FoldersTableViewController: UITableViewController {
 
         let folder = folders[indexPath.row]
         cell.folderNameLabel.text = folder.name
-        cell.notesCountLabel.text = "\(folder.notesSorted.count) item(-s)"
+        cell.notesCountLabel.text = "\(folder.notesSorted.count) " + "item(-s)".localize()
 
         return cell
     }

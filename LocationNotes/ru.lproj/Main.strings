@@ -1,0 +1,60 @@
+
+/* Class = "UINavigationItem"; title = "Folders"; ObjectID = "3tx-0I-BBm"; */
+"3tx-0I-BBm.title" = "Папки";
+
+/* Class = "UILabel"; text = "Subtitle"; ObjectID = "768-sE-G5w"; */
+"768-sE-G5w.text" = "Subtitle";
+
+/* Class = "UINavigationItem"; title = "Note"; ObjectID = "7T8-5L-YvI"; */
+"7T8-5L-YvI.title" = "Заметка";
+
+/* Class = "UILabel"; text = "Notes count"; ObjectID = "97f-Xv-rer"; */
+"97f-Xv-rer.text" = "Notes count";
+
+/* Class = "UILabel"; text = "Title"; ObjectID = "Bk8-9y-ZW0"; */
+"Bk8-9y-ZW0.text" = "Title";
+
+/* Class = "UINavigationItem"; title = "Map"; ObjectID = "Frg-t4-bNB"; */
+"Frg-t4-bNB.title" = "Карта";
+
+/* Class = "UILabel"; text = "Folder"; ObjectID = "KhN-tB-Ffk"; */
+"KhN-tB-Ffk.text" = "Folder";
+
+/* Class = "UILabel"; text = "Subtitle"; ObjectID = "Ooz-xH-FqG"; */
+"Ooz-xH-FqG.text" = "Subtitle";
+
+/* Class = "UITabBarItem"; title = "Folders"; ObjectID = "VFL-UX-3VZ"; */
+"VFL-UX-3VZ.title" = "Папки";
+
+/* Class = "UINavigationItem"; title = "Select Folder"; ObjectID = "VYY-dh-mDc"; */
+"VYY-dh-mDc.title" = "Выберите папку";
+
+/* Class = "UILabel"; text = "Name Folder"; ObjectID = "WGZ-EN-FH4"; */
+"WGZ-EN-FH4.text" = "Name Folder";
+
+/* Class = "UILabel"; text = "Name"; ObjectID = "WIv-FD-l1l"; */
+"WIv-FD-l1l.text" = "Name";
+
+/* Class = "UITabBarItem"; title = "Notes"; ObjectID = "YFA-dR-abR"; */
+"YFA-dR-abR.title" = "Заметки";
+
+/* Class = "UINavigationItem"; title = "Notes"; ObjectID = "anw-yL-oBQ"; */
+"anw-yL-oBQ.title" = "Заметки";
+
+/* Class = "UINavigationItem"; title = "Map"; ObjectID = "fUt-Pj-NQC"; */
+"fUt-Pj-NQC.title" = "Карта";
+
+/* Class = "UILabel"; text = "Title"; ObjectID = "j63-rc-ZMm"; */
+"j63-rc-ZMm.text" = "Title";
+
+/* Class = "UINavigationItem"; title = "Folder"; ObjectID = "lxF-MG-WBH"; */
+"lxF-MG-WBH.title" = "Папка";
+
+/* Class = "UITabBarItem"; title = "Map"; ObjectID = "oCd-yq-sJD"; */
+"oCd-yq-sJD.title" = "Карта";
+
+/* Class = "UILabel"; text = "Location"; ObjectID = "v4e-Mu-BYZ"; */
+"v4e-Mu-BYZ.text" = "Location";
+
+/* Class = "UITextField"; placeholder = "Title"; ObjectID = "wZ2-WZ-ykE"; */
+"wZ2-WZ-ykE.placeholder" = "Название";

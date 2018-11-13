@@ -1,0 +1,18 @@
+/* 
+  Localized.strings
+  LocationNotes
+
+  Created by Timur Saidov on 13/11/2018.
+  Copyright © 2018 Timur Saidov. All rights reserved.
+*/
+
+"Create new folder" = "Создайте новую папку";
+"Folder name" = "Имя папки";
+"Create" = "Создать";
+"Cancel" = "Отмена";
+"item(-s)" = "заметка(-ок)";
+"Note" = "Заметка";
+"Add photo using" = "Добавьте фото используя";
+"Camera" = "Камера";
+"Library" = "Библиотека";
+"Delete" = "Удалить";
