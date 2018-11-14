@@ -41,6 +41,7 @@ class NoteTableViewController: UITableViewController {
             }
         }
         
+        // Поскольку в SelectFolderTableViewController меняется note.folder, то во viewWillAppear меняется и имя директории, потому что note.folder не локальная переменная, а экземпляр в базе данных (типа глобальной переменной), которая перезаписывается в SelectFolder, но не сохраняется (не сохраняется в базе, поскольку не было сохранения контекста в SelectFolder + есть кнопка Cancel в данном классе, которая возвращает исходную директорию и сохраняет все в контексте). Чтобы и во viewWillAppear все отображалось верно, необходимо возвращать значение обратно.
         if segue.identifier == "unwindCancelSegue" {
             print("Unwind Cancel Segue")
             
